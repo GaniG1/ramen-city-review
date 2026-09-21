@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -62,18 +62,22 @@
       position: relative;
     }
 
-    /* Arka Plan Japon Kanji Filigranı */
-    .kanji-bg {
+    /* Arka Plan Zarif Chopsticks (Yemek Çubukları) Filigranı */
+    .chopsticks-bg {
       position: absolute;
-      top: 15px;
-      right: 12px;
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 72px;
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.03);
-      line-height: 1;
+      top: 8px;
+      right: -10px;
+      width: 170px;
+      height: 210px;
+      opacity: 0.08;
       pointer-events: none;
       z-index: 0;
+      color: var(--ramen-gold-light);
+    }
+
+    .chopsticks-bg svg {
+      width: 100%;
+      height: 100%;
     }
 
     /* Üst Başlık & Marka Kimliği */
@@ -355,8 +359,27 @@
 </head>
 <body>
 
-  <!-- Arka Plan Kanji Motifi -->
-  <div class="kanji-bg">拉麺</div>
+  <!-- Arka Plan Chopsticks (Yemek Çubukları & Noodle) Filigranı -->
+  <div class="chopsticks-bg" aria-hidden="true">
+    <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 1. Çubuk (Chopstick 1) -->
+      <path d="M25 15 L145 185" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" opacity="0.9"/>
+      <path d="M25 15 L38 32" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+      
+      <!-- 2. Çubuk (Chopstick 2) -->
+      <path d="M55 10 L135 190" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" opacity="0.9"/>
+      <path d="M55 10 L68 28" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+
+      <!-- Çubukların Arasından Sarkan Noodle Dalgaları -->
+      <path d="M98 102 C90 120, 115 135, 95 155 C85 168, 105 180, 92 195" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+      <path d="M108 108 C100 128, 125 142, 105 162 C95 174, 115 186, 102 198" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <path d="M88 110 C80 126, 102 138, 86 156" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+      <!-- Hafif Sıcak Buhar Efekti -->
+      <path d="M60 45 Q70 35 62 25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+      <path d="M80 40 Q90 30 82 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+    </svg>
+  </div>
 
   <!-- Üst Başlık & Marka Kimliği -->
   <header class="header">
