@@ -62,23 +62,40 @@
       position: relative;
     }
 
-    /* Arka Plan Zarif Chopsticks (Yemek Çubukları) Filigranı */
-    .chopsticks-bg {
+    /* Arka Plan Otantik Japon Doodle İkonları (Ramen, Sushi, Chopsticks) */
+    .bg-doodles {
       position: absolute;
-      top: 8px;
-      right: -10px;
-      width: 170px;
-      height: 210px;
-      opacity: 0.08;
+      inset: 0;
+      overflow: hidden;
       pointer-events: none;
       z-index: 0;
-      color: var(--ramen-gold-light);
     }
 
-    .chopsticks-bg svg {
-      width: 100%;
-      height: 100%;
+    .doodle {
+      position: absolute;
+      color: var(--ramen-gold-light);
+      opacity: 0.16;
+      transition: transform 0.3s ease;
+      animation: doodle-float 5s ease-in-out infinite alternate;
     }
+
+    .doodle-red {
+      color: #ef4444;
+      opacity: 0.18;
+    }
+
+    @keyframes doodle-float {
+      0% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+      100% { transform: translateY(-5px) rotate(var(--rot, 0deg)); }
+    }
+
+    /* İkon Konumlandırmaları (Buton ve Kartların Boşluklarına Göre) */
+    .doodle-1 { top: 18px; left: 14px; width: 34px; height: 34px; --rot: -12deg; animation-delay: 0s; }
+    .doodle-2 { top: 22px; right: 16px; width: 32px; height: 32px; --rot: 22deg; animation-delay: 1.2s; }
+    .doodle-3 { top: 27%; left: 6px; width: 32px; height: 26px; --rot: -16deg; animation-delay: 2.4s; }
+    .doodle-4 { top: 31%; right: 8px; width: 26px; height: 26px; --rot: 15deg; animation-delay: 0.8s; }
+    .doodle-5 { bottom: 82px; left: 12px; width: 32px; height: 24px; --rot: -14deg; animation-delay: 1.8s; }
+    .doodle-6 { bottom: 84px; right: 14px; width: 32px; height: 32px; --rot: 18deg; animation-delay: 3s; }
 
     /* Üst Başlık & Marka Kimliği */
     .header {
@@ -359,26 +376,69 @@
 </head>
 <body>
 
-  <!-- Arka Plan Chopsticks (Yemek Çubukları & Noodle) Filigranı -->
-  <div class="chopsticks-bg" aria-hidden="true">
-    <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- 1. Çubuk (Chopstick 1) -->
-      <path d="M25 15 L145 185" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" opacity="0.9"/>
-      <path d="M25 15 L38 32" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-      
-      <!-- 2. Çubuk (Chopstick 2) -->
-      <path d="M55 10 L135 190" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" opacity="0.9"/>
-      <path d="M55 10 L68 28" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+  <!-- Arka Plan Otantik Japon Doodle İkonları (Boşluklara Dağıtılmış Küçük İkonlar) -->
+  <div class="bg-doodles" aria-hidden="true">
+    <!-- 1. Sol Üst: Buharı Tüten Ramen Kasesi -->
+    <div class="doodle doodle-1">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22 C6 36, 14 42, 24 42 C34 42, 42 36, 42 22 Z" />
+        <path d="M18 42 L16 45 L32 45 L30 42" />
+        <line x1="4" y1="18" x2="44" y2="15" stroke-width="2.2" />
+        <line x1="6" y1="21" x2="44" y2="18" stroke-width="2.2" />
+        <path d="M18 11 Q21 7 18 3" stroke-width="1.8" opacity="0.6"/>
+        <path d="M26 12 Q29 8 26 4" stroke-width="1.8" opacity="0.6"/>
+      </svg>
+    </div>
 
-      <!-- Çubukların Arasından Sarkan Noodle Dalgaları -->
-      <path d="M98 102 C90 120, 115 135, 95 155 C85 168, 105 180, 92 195" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
-      <path d="M108 108 C100 128, 125 142, 105 162 C95 174, 115 186, 102 198" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-      <path d="M88 110 C80 126, 102 138, 86 156" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+    <!-- 2. Sağ Üst: Küçük Çapraz Chopsticks & Noodle -->
+    <div class="doodle doodle-2">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="8" y1="6" x2="40" y2="42" stroke-width="3.2" />
+        <line x1="8" y1="6" x2="13" y2="12" stroke-width="5" />
+        <line x1="16" y1="4" x2="36" y2="44" stroke-width="3.2" />
+        <line x1="16" y1="4" x2="20" y2="11" stroke-width="5" />
+        <path d="M24 22 Q20 28 26 33 Q32 38 28 44" stroke-width="2" stroke-dasharray="2 2" opacity="0.7"/>
+      </svg>
+    </div>
 
-      <!-- Hafif Sıcak Buhar Efekti -->
-      <path d="M60 45 Q70 35 62 25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
-      <path d="M80 40 Q90 30 82 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
-    </svg>
+    <!-- 3. Sol Kenar (Üst Kart Yanı): Somon Nigiri Sushi -->
+    <div class="doodle doodle-3 doodle-red">
+      <svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="7" y="16" width="34" height="15" rx="7.5" fill="rgba(255,255,255,0.06)" />
+        <path d="M4 16 C6 8, 42 8, 44 16 C38 21, 10 21, 4 16 Z" fill="rgba(239,68,68,0.3)" />
+        <rect x="21" y="10" width="6" height="21" rx="2" fill="currentColor" opacity="0.85" />
+      </svg>
+    </div>
+
+    <!-- 4. Sağ Kenar (Orta Kart Yanı): Sushi Maki Roll -->
+    <div class="doodle doodle-4">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="20" cy="20" r="17" fill="rgba(0,0,0,0.5)" />
+        <circle cx="20" cy="20" r="12" fill="rgba(255,255,255,0.08)" stroke-dasharray="2 3" />
+        <circle cx="20" cy="20" r="5.5" fill="#f59e0b" />
+      </svg>
+    </div>
+
+    <!-- 5. Sol Alt (Buton Üstü): Çıtır Gyoza (Mantı) -->
+    <div class="doodle doodle-5">
+      <svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 26 C8 12, 40 12, 42 26 C30 29, 18 29, 6 26 Z" fill="rgba(251,191,36,0.2)" />
+        <path d="M15 17 L17 21" />
+        <path d="M24 15 L24 20" />
+        <path d="M33 17 L31 21" />
+      </svg>
+    </div>
+
+    <!-- 6. Sağ Alt (Buton Üstü): İkinci Mini Ramen Kasesi -->
+    <div class="doodle doodle-6 doodle-red">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 24 C8 36, 15 41, 24 41 C33 41, 40 36, 40 24 Z" />
+        <path d="M18 41 L17 44 L31 44 L30 41" />
+        <line x1="6" y1="20" x2="42" y2="18" stroke-width="2" />
+        <path d="M20 12 Q23 8 20 5" stroke-width="1.8" opacity="0.6"/>
+        <path d="M28 12 Q31 8 28 5" stroke-width="1.8" opacity="0.6"/>
+      </svg>
+    </div>
   </div>
 
   <!-- Üst Başlık & Marka Kimliği -->
