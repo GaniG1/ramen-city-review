@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Ramen City Eskişehir | Gani Bey'i Değerlendir</title>
+  <title>Ramen City Eskişehir | Değerlendirme</title>
   
-  <!-- Google Fonts -->
+  <!-- Inter Font (Dünya standardı okunabilirlik) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Canvas Confetti CDN -->
+  <!-- Konfeti Kütüphanesi -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -23,20 +23,21 @@
     }
 
     :root {
-      /* Ramen City Otantik Renk Paleti: Japon Lake Kırmızısı, Altın Çorba Sarısı ve Kömür Siyahı */
-      --bg-dark: #0e1015;
-      --bg-surface: #151821;
-      --border-subtle: rgba(255, 255, 255, 0.08);
+      /* Minimalist & Profesyonel Renk Teorisi */
+      --bg-main: #0c0e12;
+      --card-bg: #151821;
+      --card-border: #232733;
+      --card-active-bg: rgba(245, 158, 11, 0.08);
+      --card-active-border: #f59e0b;
       
-      --ramen-red: #d9232e;
-      --ramen-red-glow: rgba(217, 35, 46, 0.4);
-      --ramen-gold: #f59e0b;
-      --ramen-gold-light: #fbbf24;
-      --ramen-gold-glow: rgba(245, 158, 11, 0.35);
+      --text-primary: #ffffff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
       
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --accent-gold: #f59e0b;
+      --accent-gold-light: #fbbf24;
+      --google-btn-bg: #d9232e;
+      --google-btn-hover: #b91c1c;
       --success-green: #10b981;
     }
 
@@ -47,248 +48,146 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(217, 35, 46, 0.22) 0%, transparent 60%),
-        radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
-      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
       height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: calc(env(safe-area-inset-top, 12px) + 8px) 16px calc(env(safe-area-inset-bottom, 12px) + 12px);
-      position: relative;
+      padding: calc(env(safe-area-inset-top, 14px) + 10px) 18px calc(env(safe-area-inset-bottom, 14px) + 14px);
     }
 
-    /* Kullanıcının İşaretlediği 10 Nokta İçin İkon Bölgeleri */
-    .icon-zone {
-      position: relative;
-      width: 100%;
-      height: 64px;
-      flex-shrink: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .zone-top {
-      margin-top: 2px;
-      margin-bottom: -4px;
-    }
-
-    .zone-bottom {
-      margin-top: 2px;
-      margin-bottom: 2px;
-    }
-
-    .icon-item {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.65));
-      animation: icon-float 4.5s ease-in-out infinite alternate;
-      transition: transform 0.25s ease;
-    }
-
-    .icon-item svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    @keyframes icon-float {
-      0% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
-      100% { transform: translateY(-4px) rotate(var(--rot, 0deg)); }
-    }
-
-    /* Mavi Dairelerin Koordinatları (Üst ve Alt 5'er Nokta) */
-    .pos-tl { top: 2px; left: 16px; width: 34px; height: 34px; --rot: -8deg; animation-delay: 0s; }
-    .pos-tr { top: 2px; right: 16px; width: 34px; height: 34px; --rot: 10deg; animation-delay: 1.2s; }
-    .pos-c  { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)); width: 36px; height: 36px; --rot: 0deg; animation-delay: 2.2s; }
-    .pos-bl { bottom: 2px; left: 16px; width: 32px; height: 32px; --rot: -12deg; animation-delay: 0.7s; }
-    .pos-br { bottom: 2px; right: 16px; width: 32px; height: 32px; --rot: 14deg; animation-delay: 1.8s; }
-
-    /* Üst Başlık & Marka Kimliği */
+    /* Üst Başlık Alanı */
     .header {
       text-align: center;
-      position: relative;
-      z-index: 1;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
-    .brand-seal {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: linear-gradient(135deg, rgba(217, 35, 46, 0.18), rgba(217, 35, 46, 0.08));
-      border: 1px solid rgba(217, 35, 46, 0.4);
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 6px;
-      box-shadow: 0 2px 10px rgba(217, 35, 46, 0.15);
-    }
-
-    .brand-icon {
-      font-size: 14px;
-      line-height: 1;
-      animation: bowl-wiggle 3s ease-in-out infinite;
-    }
-
-    @keyframes bowl-wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      20% { transform: rotate(-8deg); }
-      40% { transform: rotate(8deg); }
-      60% { transform: rotate(0deg); }
-    }
-
-    .brand-text {
+    .brand-tag {
       font-size: 11.5px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      color: #ff6b6b;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold);
       text-transform: uppercase;
+      margin-bottom: 6px;
+      display: inline-block;
     }
 
     .title {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: #ffffff;
-      line-height: 1.2;
-    }
-
-    .title span {
-      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: var(--text-primary);
+      line-height: 1.25;
     }
 
     .subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 3px;
-      font-weight: 500;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 5px;
+      font-weight: 400;
+      line-height: 1.4;
     }
 
-    /* Orta Kısım: Yorum Kartları */
+    /* Orta Kısım: Yorum Seçenekleri */
     .content {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
       flex: 1;
       justify-content: center;
-      position: relative;
-      z-index: 1;
-      margin: 8px 0;
+      margin: 12px 0;
     }
 
-    .instruction-bar {
+    .content-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--ramen-gold-light);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+      justify-content: space-between;
+      padding: 0 4px;
     }
 
-    .instruction-bar svg.arrow-icon {
-      width: 13px;
-      height: 13px;
-      animation: bounce-arrow 1.8s ease-in-out infinite;
-    }
-
-    @keyframes bounce-arrow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(3px); }
+    .instruction {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.2px;
     }
 
     .btn-shuffle {
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      color: var(--ramen-gold-light);
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-primary);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      margin-left: 6px;
       transition: all 0.2s ease;
       font-family: inherit;
-      text-transform: none;
-      letter-spacing: 0;
     }
 
     .btn-shuffle:active {
-      transform: scale(0.92);
-      background: rgba(245, 158, 11, 0.25);
+      transform: scale(0.94);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .btn-shuffle svg {
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
+      color: var(--accent-gold-light);
     }
 
-    .card-text {
-      transition: opacity 0.2s ease;
-    }
-
+    /* Yorum Kartları */
     .review-cards {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
-    /* Kart Tasarımı */
     .card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 13px;
-      padding: 10px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 13px 15px;
       cursor: pointer;
       position: relative;
-      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .card:active {
       transform: scale(0.985);
     }
 
-    /* Seçildiğinde (Dokunulduğunda) */
     .card.selected {
-      background: linear-gradient(135deg, rgba(217, 35, 46, 0.12), rgba(245, 158, 11, 0.08));
-      border-color: var(--ramen-red);
-      box-shadow: 0 4px 20px var(--ramen-red-glow);
+      background: var(--card-active-bg);
+      border-color: var(--card-active-border);
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.18);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: 7px;
     }
 
     .stars {
-      color: #f59e0b;
-      font-size: 12px;
-      letter-spacing: 1.5px;
+      color: var(--accent-gold);
+      font-size: 13px;
+      letter-spacing: 2px;
     }
 
     .copy-badge {
-      font-size: 10.5px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 6px;
       display: flex;
       align-items: center;
@@ -303,64 +202,43 @@
 
     .card.selected .copy-badge {
       color: #ffffff;
-      background: var(--ramen-red);
-      border-color: var(--ramen-red);
-      box-shadow: 0 2px 8px var(--ramen-red-glow);
+      background: var(--success-green);
+      border-color: var(--success-green);
     }
 
     .card-text {
-      font-size: 12px;
-      line-height: 1.42;
+      font-size: 13px;
+      line-height: 1.52;
       color: #e2e8f0;
-      font-weight: 500;
+      font-weight: 450;
+      transition: opacity 0.2s ease;
     }
 
-    /* Alt Bölüm: Aksiyon Butonu */
+    /* Alt Bölüm: Ergonomik Google Butonu */
     .footer {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
-      position: relative;
-      z-index: 1;
+      gap: 8px;
     }
 
     .btn-google {
       width: 100%;
       background: linear-gradient(135deg, #d9232e 0%, #b91c1c 100%);
       color: #ffffff;
-      font-weight: 800;
-      font-size: 14.5px;
-      padding: 14px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 15px 20px;
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      box-shadow: 0 6px 22px var(--ramen-red-glow);
-      transition: all 0.25s ease;
+      gap: 11px;
+      box-shadow: 0 6px 20px rgba(217, 35, 46, 0.35);
+      transition: all 0.2s ease;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-google::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-      transform: skewX(-20deg);
-      animation: button-shine 3.5s infinite;
-    }
-
-    @keyframes button-shine {
-      0% { left: -100%; }
-      20%, 100% { left: 200%; }
     }
 
     .btn-google:active {
@@ -368,27 +246,27 @@
     }
 
     .google-icon-box {
-      width: 24px;
-      height: 24px;
+      width: 25px;
+      height: 25px;
       background: #ffffff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .google-icon-box svg {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
     }
 
     .footer-hint {
-      font-size: 11px;
+      font-size: 11.5px;
       color: var(--text-muted);
       text-align: center;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     /* Toast Bildirimi */
@@ -400,10 +278,10 @@
       background: #15803d;
       color: #ffffff;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
       padding: 9px 18px;
       border-radius: 999px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
       opacity: 0;
       pointer-events: none;
       transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -411,7 +289,7 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .toast.show {
@@ -422,105 +300,22 @@
 </head>
 <body>
 
-  <!-- Üst Başlık & Marka Kimliği -->
+  <!-- Üst Başlık -->
   <header class="header">
-    <div class="brand-seal">
-      <span class="brand-icon">🍜</span>
-      <span class="brand-text">RAMEN CITY • ESKİŞEHİR</span>
-    </div>
-    <h1 class="title">Deneyiminizi <span>Değerlendirin</span></h1>
-    <p class="subtitle">Ziyaretiniz için teşekkür ederiz! Görüşünüz bizim için çok değerli.</p>
+    <span class="brand-tag">Ramen City Eskişehir</span>
+    <h1 class="title">Deneyiminizi Değerlendirin</h1>
+    <p class="subtitle">Ziyaretiniz için teşekkür ederiz. Görüşleriniz bize güç katıyor.</p>
   </header>
 
-  <!-- Üst İkon Bölgesi (Kullanıcının İşaretlediği 5 Nokta) -->
-  <div class="icon-zone zone-top" aria-hidden="true">
-    <!-- 1. Sol Üst: Buharlı Nefis Ramen Kasesi -->
-    <div class="icon-item pos-tl" title="Ramen Kasesi">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 28 C8 48 20 54 32 54 C44 54 56 48 56 28 Z" fill="#b91c1c" stroke="#1f2937" stroke-width="2"/>
-        <path d="M24 54 L22 58 L42 58 L40 54 Z" fill="#1f2937"/>
-        <ellipse cx="32" cy="28" rx="24" ry="7" fill="#f59e0b"/>
-        <path d="M16 28 Q24 22 32 28 Q40 34 48 28" stroke="#fde047" stroke-width="3" stroke-linecap="round"/>
-        <ellipse cx="23" cy="28" rx="6" ry="4.5" fill="#ffffff" transform="rotate(-15 23 28)"/>
-        <circle cx="23" cy="28" r="3" fill="#f97316"/>
-        <circle cx="41" cy="27" r="5" fill="#ffffff"/>
-        <path d="M41 25 A 2 2 0 0 1 43 27 A 2 2 0 0 1 41 29 A 1 1 0 0 1 40 27" stroke="#ec4899" stroke-width="1.5" fill="none"/>
-        <rect x="30" y="24" width="2.5" height="4" rx="1" fill="#22c55e" transform="rotate(25 30 24)"/>
-        <rect x="34" y="25" width="2.5" height="4" rx="1" fill="#22c55e" transform="rotate(-15 34 25)"/>
-        <path d="M22 18 Q26 12 23 7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-        <path d="M32 17 Q36 11 33 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-        <path d="M42 18 Q46 12 43 7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-      </svg>
-    </div>
-
-    <!-- 2. Sağ Üst: Taze Somonlu Nigiri Sushi -->
-    <div class="icon-item pos-tr" title="Somon Nigiri">
-      <svg viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="20" width="48" height="22" rx="11" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-        <ellipse cx="18" cy="34" rx="2" ry="1.5" fill="#e2e8f0"/>
-        <ellipse cx="32" cy="36" rx="2" ry="1.5" fill="#e2e8f0"/>
-        <ellipse cx="46" cy="34" rx="2" ry="1.5" fill="#e2e8f0"/>
-        <path d="M4 22 C6 10 58 10 60 22 C52 27 12 27 4 22 Z" fill="#fb7185" stroke="#e11d48" stroke-width="1.5"/>
-        <path d="M16 15 Q22 22 28 25" stroke="#ffe4e6" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 13 Q34 20 40 24" stroke="#ffe4e6" stroke-width="2" stroke-linecap="round"/>
-        <path d="M40 14 Q46 20 52 24" stroke="#ffe4e6" stroke-width="2" stroke-linecap="round"/>
-        <rect x="28" y="11" width="8" height="31" rx="2" fill="#18181b" stroke="#27272a" stroke-width="1"/>
-      </svg>
-    </div>
-
-    <!-- 3. Orta Merkez: Chopsticks ile Kaldırılan Noodle -->
-    <div class="icon-item pos-c" title="Chopsticks & Noodle">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="12" y1="8" x2="52" y2="48" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="12" y1="8" x2="18" y2="14" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
-        <line x1="22" y1="6" x2="48" y2="52" stroke="#b45309" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="22" y1="6" x2="27" y2="12" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
-        <path d="M34 32 C30 40 40 44 32 54 C28 58 36 62 34 64" stroke="#fde047" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M39 36 C35 44 45 48 37 58 C33 62 40 64 39 64" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="28" cy="20" r="1.5" fill="#ffffff" opacity="0.8"/>
-      </svg>
-    </div>
-
-    <!-- 4. Sol Alt: Sushi Maki Roll -->
-    <div class="icon-item pos-bl" title="Sushi Maki">
-      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="26" cy="26" r="24" fill="#18181b" stroke="#27272a" stroke-width="2"/>
-        <circle cx="26" cy="26" r="19" fill="#f8fafc"/>
-        <circle cx="26" cy="26" r="18" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3 3"/>
-        <circle cx="23" cy="24" r="7" fill="#fb7185" stroke="#f43f5e" stroke-width="1"/>
-        <path d="M27 22 C33 22 34 30 28 32 C26 27 25 24 27 22 Z" fill="#22c55e"/>
-        <ellipse cx="14" cy="22" rx="1.5" ry="1" fill="#f59e0b" transform="rotate(30 14 22)"/>
-        <ellipse cx="38" cy="28" rx="1.5" ry="1" fill="#f59e0b" transform="rotate(-40 38 28)"/>
-      </svg>
-    </div>
-
-    <!-- 5. Sağ Alt: Çıtır Gyoza (Mantı) -->
-    <div class="icon-item pos-br" title="Çıtır Gyoza">
-      <svg viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 34 C8 16 56 16 58 34 C44 38 20 38 6 34 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
-        <path d="M10 33 C20 36 44 36 54 33 C50 38 14 38 10 33 Z" fill="#b45309"/>
-        <path d="M18 22 L20 27" stroke="#ca8a04" stroke-width="2" stroke-linecap="round"/>
-        <path d="M27 19 L28 25" stroke="#ca8a04" stroke-width="2" stroke-linecap="round"/>
-        <path d="M37 19 L36 25" stroke="#ca8a04" stroke-width="2" stroke-linecap="round"/>
-        <path d="M46 22 L44 27" stroke="#ca8a04" stroke-width="2" stroke-linecap="round"/>
-        <path d="M26 13 Q29 8 26 3" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
-        <path d="M38 13 Q41 8 38 3" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
-      </svg>
-    </div>
-  </div>
-
-  <!-- Orta Bölüm: Yorum Seçenekleri -->
+  <!-- Orta Bölüm: Seçenekler -->
   <main class="content">
-    <div class="instruction-bar">
-      <svg class="arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
-      <span>Bir yoruma dokunun</span>
-      <button type="button" class="btn-shuffle" onclick="shuffleReviews()" title="Farklı yorum seçenekleri göster">
+    <div class="content-header">
+      <span class="instruction">Bir yorum seçin (otomatik kopyalanır)</span>
+      <button type="button" class="btn-shuffle" onclick="shuffleReviews()" title="Farklı yorum seçenekleri getir">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
-        <span>Farklı Yorumlar</span>
+        <span>Farklı Yorum</span>
       </button>
     </div>
 
@@ -536,7 +331,7 @@
             <span class="badge-label">Kopyala</span>
           </span>
         </div>
-        <p class="card-text" id="card-text-1">"Tavuklu ramen ve çıtır tavukları enfesti. Menü seçiminde bize çok yardımcı olan Gani Bey'e ilgisi için teşekkürler."</p>
+        <p class="card-text" id="card-text-1"></p>
       </div>
 
       <!-- Kart 2 -->
@@ -550,7 +345,7 @@
             <span class="badge-label">Kopyala</span>
           </span>
         </div>
-        <p class="card-text" id="card-text-2">"Mekan oldukça kalabalık olmasına rağmen siparişlerimiz sıcacık ve çok hızlı geldi. Gani Bey'in dikkati harikaydı."</p>
+        <p class="card-text" id="card-text-2"></p>
       </div>
 
       <!-- Kart 3 -->
@@ -564,83 +359,12 @@
             <span class="badge-label">Kopyala</span>
           </span>
         </div>
-        <p class="card-text" id="card-text-3">"Arkadaşlarla keyifli bir akşam geçirdik. Masamızla ilgilenen Gani Bey'in samimi ve güler yüzlü yaklaşımı için teşekkürler."</p>
+        <p class="card-text" id="card-text-3"></p>
       </div>
     </div>
   </main>
 
-  <!-- Alt İkon Bölgesi (Kullanıcının İşaretlediği 5 Nokta) -->
-  <div class="icon-zone zone-bottom" aria-hidden="true">
-    <!-- 6. Sol Üst: Çapraz Ahşap Chopsticks -->
-    <div class="icon-item pos-tl" title="Chopsticks">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="10" x2="54" y2="54" stroke="#d97706" stroke-width="4" stroke-linecap="round"/>
-        <line x1="10" y1="10" x2="18" y2="18" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
-        <line x1="18" y1="8" x2="48" y2="56" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
-        <line x1="18" y1="8" x2="24" y2="16" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
-        <line x1="28" y1="28" x2="34" y2="34" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-    <!-- 7. Sağ Üst: Kırmızı & Siyah Ramen Kasesi -->
-    <div class="icon-item pos-tr" title="Ramen Kasesi">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 28 C8 48 20 54 32 54 C44 54 56 48 56 28 Z" fill="#b91c1c" stroke="#1f2937" stroke-width="2"/>
-        <path d="M24 54 L22 58 L42 58 L40 54 Z" fill="#1f2937"/>
-        <ellipse cx="32" cy="28" rx="24" ry="7" fill="#f59e0b"/>
-        <path d="M16 28 Q24 22 32 28 Q40 34 48 28" stroke="#fde047" stroke-width="3" stroke-linecap="round"/>
-        <ellipse cx="40" cy="28" rx="6" ry="4.5" fill="#ffffff" transform="rotate(15 40 28)"/>
-        <circle cx="40" cy="28" r="3" fill="#f97316"/>
-        <circle cx="23" cy="27" r="5" fill="#ffffff"/>
-        <path d="M23 25 A 2 2 0 0 1 25 27 A 2 2 0 0 1 23 29 A 1 1 0 0 1 22 27" stroke="#ec4899" stroke-width="1.5" fill="none"/>
-        <path d="M26 17 Q30 11 27 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-        <path d="M36 17 Q40 11 37 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-      </svg>
-    </div>
-
-    <!-- 8. Orta Merkez: Taze Somonlu Nigiri Sushi -->
-    <div class="icon-item pos-c" title="Somon Nigiri">
-      <svg viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="20" width="48" height="22" rx="11" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-        <ellipse cx="18" cy="34" rx="2" ry="1.5" fill="#e2e8f0"/>
-        <ellipse cx="32" cy="36" rx="2" ry="1.5" fill="#e2e8f0"/>
-        <ellipse cx="46" cy="34" rx="2" ry="1.5" fill="#e2e8f0"/>
-        <path d="M4 22 C6 10 58 10 60 22 C52 27 12 27 4 22 Z" fill="#fb7185" stroke="#e11d48" stroke-width="1.5"/>
-        <path d="M16 15 Q22 22 28 25" stroke="#ffe4e6" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 13 Q34 20 40 24" stroke="#ffe4e6" stroke-width="2" stroke-linecap="round"/>
-        <path d="M40 14 Q46 20 52 24" stroke="#ffe4e6" stroke-width="2" stroke-linecap="round"/>
-        <rect x="28" y="11" width="8" height="31" rx="2" fill="#18181b" stroke="#27272a" stroke-width="1"/>
-      </svg>
-    </div>
-
-    <!-- 9. Sol Alt: Sushi Maki Roll -->
-    <div class="icon-item pos-bl" title="Sushi Maki">
-      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="26" cy="26" r="24" fill="#18181b" stroke="#27272a" stroke-width="2"/>
-        <circle cx="26" cy="26" r="19" fill="#f8fafc"/>
-        <circle cx="26" cy="26" r="18" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3 3"/>
-        <circle cx="23" cy="24" r="7" fill="#fb7185" stroke="#f43f5e" stroke-width="1"/>
-        <path d="M27 22 C33 22 34 30 28 32 C26 27 25 24 27 22 Z" fill="#22c55e"/>
-        <ellipse cx="14" cy="22" rx="1.5" ry="1" fill="#f59e0b" transform="rotate(30 14 22)"/>
-        <ellipse cx="38" cy="28" rx="1.5" ry="1" fill="#f59e0b" transform="rotate(-40 38 28)"/>
-      </svg>
-    </div>
-
-    <!-- 10. Sağ Alt: Chopsticks ile Kaldırılan Noodle -->
-    <div class="icon-item pos-br" title="Chopsticks & Noodle">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="12" y1="8" x2="52" y2="48" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="12" y1="8" x2="18" y2="14" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
-        <line x1="22" y1="6" x2="48" y2="52" stroke="#b45309" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="22" y1="6" x2="27" y2="12" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
-        <path d="M34 32 C30 40 40 44 32 54 C28 58 36 62 34 64" stroke="#fde047" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M39 36 C35 44 45 48 37 58 C33 62 40 64 39 64" stroke="#facc15" stroke-width="3.5" stroke-linecap="round"/>
-        <circle cx="28" cy="20" r="1.5" fill="#ffffff" opacity="0.8"/>
-      </svg>
-    </div>
-  </div>
-
-  <!-- Alt Buton: Doğrudan Google Yönlendirmesi -->
+  <!-- Alt Buton: Ergonomik Google Yönlendirmesi -->
   <footer class="footer">
     <a href="https://maps.app.goo.gl/2MnV6XSJXi3mneHa8?g_st=aw" id="google-review-btn" class="btn-google" onclick="handleGoogleClick(event)">
       <div class="google-icon-box">
@@ -651,17 +375,17 @@
           <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
         </svg>
       </div>
-      <span>Google Haritalar'da Yapıştır & Puanla</span>
+      <span>Google Haritalar'da Paylaş</span>
     </a>
-    <p class="footer-hint">Yorumu seçtikten sonra açılan sayfaya basılı tutup yapıştırabilirsiniz.</p>
+    <p class="footer-hint">İpucu: Yorumu Google'a yapıştırdıktan sonra dilediğiniz gibi düzenleyebilirsiniz.</p>
   </footer>
 
   <!-- Toast Bildirimi -->
   <div class="toast" id="toast">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
     </svg>
-    <span>Yorum kopyalandı! Şimdi Google'a yapıştırabilirsiniz.</span>
+    <span>Yorum kopyalandı! Google'a yapıştırabilirsiniz.</span>
   </div>
 
   <script>
@@ -671,7 +395,7 @@
     let copiedText = null;
 
     // -------------------------------------------------------------
-    // ZENGİN & ORGANİK YORUM HAVUZU (Bot algılanmasını önleyen 30 farklı yorum)
+    // ZENGİN & ORGANİK YORUM HAVUZU (30 Farklı Doğal Müşteri Cümlesi)
     // -------------------------------------------------------------
     const POOL_FOOD = [
       '"Tavuklu ramen ve çıtır tavukları enfesti. Menü seçiminde bize çok yardımcı olan Gani Bey\'e ilgisi için teşekkürler."',
@@ -712,23 +436,21 @@
       '"Eskişehir\'e çok yakışan harika bir mekan. Gani Bey\'in güler yüzü ve özenli servisi için çok teşekkür ederiz."'
     ];
 
-    // 1. Rastgele Yorum Seçici (Her müşteri farklı kombinasyon görür)
     function getRandomItem(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
 
+    // Yorumları Rastgele Seç & Kartlara Doldur
     function shuffleReviews() {
-      // 3 farklı havuzdan 1'er tane seç
       const selected = [
         getRandomItem(POOL_FOOD),
         getRandomItem(POOL_SERVICE),
         getRandomItem(POOL_EXPERIENCE)
       ];
 
-      // Sıralamayı da rastgele karıştır
+      // Sıralamayı rastgele karıştır
       selected.sort(() => Math.random() - 0.5);
 
-      // Kartlara ata
       for (let i = 1; i <= 3; i++) {
         const textEl = document.getElementById(`card-text-${i}`);
         if (textEl) {
@@ -740,7 +462,7 @@
         }
       }
 
-      // Seçili kart durumlarını ve kopyalanan metni sıfırla
+      // Seçili durumları sıfırla
       document.querySelectorAll('.card').forEach((card, index) => {
         card.classList.remove('selected');
         const badge = document.getElementById(`badge-${index + 1}`);
@@ -756,14 +478,14 @@
       copiedText = null;
     }
 
-    // 2. Sayfa Açıldığında: Yorumları rastgele doldur ve konfeti patlat
+    // Sayfa Açıldığında
     window.addEventListener('load', () => {
       shuffleReviews();
       fireConfetti();
     });
 
     function fireConfetti() {
-      const count = 140;
+      const count = 120;
       const defaults = {
         origin: { y: 0.65 },
         colors: ['#d9232e', '#fbbf24', '#f59e0b', '#ffffff', '#10b981']
@@ -779,10 +501,9 @@
       fire(0.2, { spread: 60 });
       fire(0.35, { spread: 90, decay: 0.91, scalar: 0.8 });
       fire(0.1, { spread: 110, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-      fire(0.1, { spread: 120, startVelocity: 40 });
     }
 
-    // 3. Müşteri Kartı Tıkladığında
+    // Kart Seçildiğinde
     function handleCardClick(element, id) {
       document.querySelectorAll('.card').forEach((card, index) => {
         card.classList.remove('selected');
@@ -848,10 +569,10 @@
       toast.classList.add('show');
       setTimeout(() => {
         toast.classList.remove('show');
-      }, 2200);
+      }, 2000);
     }
 
-    // 4. Google Butonuna Basıldığında
+    // Google Butonuna Basıldığında
     function handleGoogleClick(e) {
       if (!copiedText) {
         const firstCardText = (document.getElementById('card-text-1') || document.querySelector('.card .card-text')).textContent.replace(/^"|"$/g, '');
