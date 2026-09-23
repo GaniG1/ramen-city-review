@@ -268,34 +268,6 @@
       text-align: center;
       font-weight: 400;
     }
-
-    /* Toast Bildirimi */
-    .toast {
-      position: fixed;
-      bottom: 85px;
-      left: 50%;
-      transform: translateX(-50%) translateY(30px);
-      background: #15803d;
-      color: #ffffff;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 9px 18px;
-      border-radius: 999px;
-      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
   </style>
 </head>
 <body>
@@ -379,14 +351,6 @@
     </a>
     <p class="footer-hint">İpucu: Yorumu Google'a yapıştırdıktan sonra dilediğiniz gibi düzenleyebilirsiniz.</p>
   </footer>
-
-  <!-- Toast Bildirimi -->
-  <div class="toast" id="toast">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-    </svg>
-    <span>Yorum kopyalandı! Google'a yapıştırabilirsiniz.</span>
-  </div>
 
   <script>
     // Ramen City Eskişehir Google Haritalar Bağlantısı
@@ -537,9 +501,7 @@
 
     function copyToClipboard(text) {
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => {
-          showToast();
-        }).catch(() => {
+        navigator.clipboard.writeText(text).catch(() => {
           fallbackCopy(text);
         });
       } else {
@@ -557,19 +519,10 @@
       textArea.select();
       try {
         document.execCommand('copy');
-        showToast();
       } catch (err) {
         console.error('Kopyalama hatası:', err);
       }
       document.body.removeChild(textArea);
-    }
-
-    function showToast() {
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
     }
 
     // Google Butonuna Basıldığında
