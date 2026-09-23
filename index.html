@@ -215,12 +215,42 @@
       transition: opacity 0.2s ease;
     }
 
-    /* Alt Bölüm: Ergonomik Google Butonu */
+    /* Alt Bölüm: Fotoğraf Uyarısı & Ergonomik Google Butonu */
     .footer {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 10px;
+    }
+
+    .photo-tip-banner {
+      width: 100%;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 12px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
       gap: 9px;
+    }
+
+    .badge-important {
+      background: var(--accent-gold);
+      color: #0c0e12;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      padding: 3px 6.5px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .photo-tip-text {
+      font-size: 12px;
+      line-height: 1.38;
+      color: #f1f5f9;
+      font-weight: 500;
     }
 
     .btn-google {
@@ -339,6 +369,11 @@
 
   <!-- Alt Buton: Ergonomik Google Yönlendirmesi -->
   <footer class="footer">
+    <div class="photo-tip-banner">
+      <span class="badge-important">ÖNEMLİ</span>
+      <p class="photo-tip-text">📸 Masada çektiğiniz yemek fotoğrafını da eklerseniz yorumumuz Google Haritalar'da en üstte öne çıkıyor!</p>
+    </div>
+
     <a href="https://www.google.com/maps/place/Ramen+City+Eski%C5%9Fehir/data=!4m7!3m6!1s0x14cc15720d92f2cf:0x2efcb48fdf4d44f6!8m2!3d39.7838381!4d30.5005009!9m1!1b1" id="google-review-btn" class="btn-google" onclick="handleGoogleClick(event)">
       <div class="google-icon-box">
         <svg viewBox="0 0 24 24">
@@ -360,45 +395,54 @@
     let copiedText = null;
 
     // -------------------------------------------------------------
-    // ZENGİN & ORGANİK YORUM HAVUZU (30 Farklı Doğal Müşteri Cümlesi)
+    // ZENGİN & AKILLI YORUM HAVUZU (Zamana ve Fotoğrafa Göre Organik)
     // -------------------------------------------------------------
+    // 1. Lezzet & Fotoğraf Odaklı
     const POOL_FOOD = [
       '"Tavuklu ramen ve çıtır tavukları enfesti. Menü seçiminde bize çok yardımcı olan Gani Bey\'e ilgisi için teşekkürler."',
       '"Spicy ramen tam kararındaydı, acı dengesi harika ayarlanmış. Serviste bizimle ilgilenen Gani Bey çok kibardı."',
-      '"Eskişehir\'de böyle lezzetli bir Uzak Doğu mekanı olması çok sevindirici. Gani arkadaşımızın tavsiye ettiği yemeklere bayıldık."',
-      '"Porsiyonlar oldukça doyurucu ve sıcaktı. Masamıza bakan Gani Bey son derece güler yüzlü ve ilgiliydi."',
-      '"Miso ramen ve gyozaları mutlaka deneyin derim. Servisteki Gani Bey\'in pozitif enerjisi akşamımızı güzelleştirdi."',
-      '"Menüdeki çeşitlilik çok başarılı. Gani Bey hem ramenleri güzelce anlattı hem de çok özenli bir servisle ilgilendi."',
+      '"Fotoğrafını da ekledim, sunumu ve porsiyonları gerçekten çok başarılı. Gani Bey\'in samimi servisi için teşekkürler."',
+      '"Eskişehir\'de böyle lezzetli bir Uzak Doğu mekanı olması çok sevindirici. Gani arkadaşımızın önerdiği yemeklere bayıldık."',
+      '"Miso ramen ve başlangıç tabakları nefisti. Servisteki Gani Bey\'in pozitif enerjisi akşamımızı güzelleştirdi."',
+      '"Görseldeki gibi dumanı tüten sıcacık bir ramen yedik. Masamızla ilgilenen Gani Bey son derece ilgili ve nazikti."',
       '"İlk defa geldik ve çok memnun ayrıldık. Özellikle Gani Bey\'in önerdiği roll ve ramen ikilisi 10/10\'du."',
-      '"Etli ramen ve başlangıç tabakları nefisti. Gani arkadaşımız siparişlerimizi hiç bekletmeden sıcacık getirdi."',
-      '"Ramen suyu çok aromatik ve lezzetliydi. Sipariş verirken yardımcı olan Gani Bey\'e ilgisi için teşekkürler."',
-      '"Noodle kıvamı ve malzemeler çok tazeydi. Servisimizle ilgilenen Gani Bey son derece dikkatliydi."'
+      '"Ramen suyu aromatik, noodle kıvamı tam yerindeydi. Sipariş verirken yardımcı olan Gani Bey\'e ilgisi için teşekkürler."',
+      '"Çıtır tavuklar ve dana etli ramen muazzamdı. Masamıza bakan Gani arkadaşımız siparişleri hiç bekletmedi."',
+      '"Yemeklerin sunumu ve tadı harikaydı, fotoğrafını da çektik. Gani Bey\'in özenli servisi çok hoşumuza gitti."'
     ];
 
+    // 2. Gündüz & Öğle Saatleri (11:00 - 16:30)
+    const POOL_LUNCH = [
+      '"Öğle molasında geldik, siparişlerimiz sıcacık ve dakikalar içinde masadaydı. Hızlı servisi için Gani Bey\'e çok teşekkürler."',
+      '"İş arasında öğle yemeği için uğradık. Mekan yoğun olmasına rağmen Gani Bey siparişlerimizi hiç aksatmadan getirdi."',
+      '"Öğlen saatinde hızlıca doyurucu ve lezzetli bir yemek yedik. Masamıza bakan Gani Bey çok pratik ve kibardı."',
+      '"Öğle molasında vaktimiz kısıtlıydı ama servis inanılmaz hızlıydı. Gani arkadaşımıza ilgisi ve hızı için teşekkür ederiz."',
+      '"Günün koşturmacasında sıcacık bir ramen molası çok iyi geldi. Servisteki Gani Bey\'in güler yüzü harikaydı."',
+      '"Öğlen arkadaşlarla uğradık, servis hızı ve yemeklerin sıcaklığı kusursuzdu. Gani Bey\'e emeği için teşekkürler."',
+      '"Öğle servisi çok seri ve özenliydi. Masamızla ilgilenen Gani Bey her detayda çok yardımcı oldu."'
+    ];
+
+    // 3. Akşam Saatleri (16:30 sonrası ve gece)
+    const POOL_DINNER = [
+      '"Akşam yemeğinde arkadaş ortamıyla keyifli vakit geçirdik. Masamızla ilgilenen Gani Bey\'e samimi ilgisi için teşekkürler."',
+      '"Akşam saatlerinde mekanın enerjisi ve ambiyansı çok güzel. Servis ekibinden Gani Bey akşam boyu çok özenliydi."',
+      '"Akşam yemeği için Eskişehir\'deki en iyi Uzak Doğu mekanı. Gani arkadaşımız masamızı hiç boş bırakmadı, eline sağlık."',
+      '"Güzel bir akşam yemeği deneyimi oldu. Gani Bey hem menüdeki önerileriyle hem de nazik ilgisiyle çok yardımcı oldu."',
+      '"Günün yorgunluğunu sıcacık lezzetlerle attık. Masamıza bakan Gani Bey\'in pozitif yaklaşımı akşamımızı güzelleştirdi."',
+      '"Akşam oldukça hareketliydi ama servis hiç aksamadı. Gani Bey\'in profesyonel ve saygılı servisi takdire şayan."',
+      '"Akşam yemeği için geldik, ortam da lezzetler de çok başarılıydı. Gani Bey\'e güler yüzlü ilgisi için teşekkür ederiz."'
+    ];
+
+    // 4. Genel Servis & Misafirperverlik
     const POOL_SERVICE = [
-      '"Mekan oldukça kalabalık olmasına rağmen siparişlerimiz sıcacık ve çok hızlı geldi. Gani Bey\'in dikkati harikaydı."',
-      '"Temiz bir mekan ve servis ekibi çok profesyonel. Bizimle ilgilenen Gani Bey her isteğimize anında yardımcı oldu."',
-      '"Öğle molasında uğradık, servis inanılmaz hızlıydı. Gani Bey sayesinde hiç beklemeden harika bir yemek yedik."',
+      '"Mekan oldukça temiz ve servis personeli çok profesyonel. Bizimle ilgilenen Gani Bey her isteğimize anında yardımcı oldu."',
       '"Restoranın genel havası ve düzeni çok güzel. Servis personeli Gani Bey\'in saygılı ve nazik yaklaşımı için teşekkürler."',
       '"Masaların düzeni ve servis hızı çok başarılıydı. Gani Bey her detayla tek tek özenle ilgilendi."',
       '"Siparişler tam zamanında ve eksiksiz geldi. Masamızla ilgilenen Gani Bey\'in profesyonelliği takdire şayan."',
-      '"Yoğun bir saatte gitmemize rağmen servis hiç aksamadı. Gani Bey tüm masalarla çok hızlı ve nazik ilgilendi."',
       '"Yemekler gibi servis kalitesi de çok iyiydi. Masamıza bakan Gani Bey son derece kibar ve özenliydi."',
-      '"Güler yüzlü karşılama ve hızlı servis. Gani Bey akşam boyu masamızı hiç boş bırakmadı, elinize sağlık."',
-      '"Gerek sipariş alma hızı gerek yemeklerin sunumu çok özenliydi. Gani Bey\'e emeği için teşekkür ederiz."'
-    ];
-
-    const POOL_EXPERIENCE = [
-      '"Arkadaş ortamıyla oturup keyifli bir akşam geçirmek için harika bir yer. Gani Bey\'e samimi ilgisi için çok teşekkürler."',
-      '"Yemekler de mekanın ambiyansı da çok keyifliydi. Gani Bey masamıza çok pozitif bir hava kattı."',
-      '"Eskişehir\'de Uzak Doğu mutfağı için ilk tercihimiz oldu. Gani Bey\'in samimi yaklaşımı bizi çok mutlu etti."',
-      '"Her şey çok güzeldi. Özellikle servisimize bakan Gani Bey\'in nezaketi ve samimi ilgisi için teşekkürler."',
-      '"Hem yemeklerin lezzeti hem de Gani Bey\'in ilgisi bizi çok memnun etti. Kesinlikle tekrar geleceğiz."',
-      '"Ramen City ekibine ve özellikle masamızla ilgilenen Gani Bey\'e teşekkürler, çok keyifli bir deneyimdi."',
-      '"Ortam çok tatlı, yemekler sıcak ve doyurucu. Gani Bey\'in güler yüzü masaya ayrı bir samimiyet kattı."',
-      '"Arkadaş tavsiyesiyle geldik ve çok beğendik. Bizimle ilgilenen Gani Bey işini severek yaptığını hissettiriyor."',
-      '"Yemekler çok lezzetliydi, servis de bir o kadar nazikti. Gani Bey\'e ilgisi ve samimiyeti için teşekkür ederiz."',
-      '"Eskişehir\'e çok yakışan harika bir mekan. Gani Bey\'in güler yüzü ve özenli servisi için çok teşekkür ederiz."'
+      '"Güler yüzlü karşılama ve hızlı servis. Gani Bey masamızı hiç boş bırakmadı, elinize sağlık."',
+      '"Eskişehir\'e çok yakışan harika bir mekan. Gani Bey\'in güler yüzü ve özenli servisi için çok teşekkür ederiz."',
+      '"Arkadaş tavsiyesiyle geldik ve çok beğendik. Bizimle ilgilenen Gani Bey işini severek yaptığını hissettiriyor."'
     ];
 
     function getRandomItem(array) {
@@ -407,10 +451,15 @@
 
     // Yorumları Rastgele Seç & Kartlara Doldur
     function shuffleReviews() {
+      // Saate göre öğle / akşam havuzunu belirle (11:00 - 16:30 arası öğle)
+      const hour = new Date().getHours();
+      const isLunchTime = hour >= 11 && hour < 17;
+      const timePool = isLunchTime ? POOL_LUNCH : POOL_DINNER;
+
       const selected = [
         getRandomItem(POOL_FOOD),
-        getRandomItem(POOL_SERVICE),
-        getRandomItem(POOL_EXPERIENCE)
+        getRandomItem(timePool),
+        getRandomItem(POOL_SERVICE)
       ];
 
       // Sıralamayı rastgele karıştır
