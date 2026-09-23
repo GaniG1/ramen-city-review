@@ -481,13 +481,10 @@
       const timePool = isLunchTime ? POOL_LUNCH : POOL_DINNER;
 
       const selected = [
-        getRandomItem(POOL_FOOD),
-        getRandomItem(timePool),
-        getRandomItem(POOL_SERVICE)
+        getRandomItem(POOL_FOOD),    // 1. Kart: Genel Lezzet & Sunum
+        getRandomItem(timePool),     // 2. Kart: Öğle (gündüz) veya Ambiyans (akşam)
+        getRandomItem(POOL_SERVICE)  // 3. Kart: Misafirperverlik & Temizlik
       ];
-
-      // Sıralamayı rastgele karıştır
-      selected.sort(() => Math.random() - 0.5);
 
       for (let i = 1; i <= 3; i++) {
         const textEl = document.getElementById(`card-text-${i}`);
