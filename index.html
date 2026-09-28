@@ -55,11 +55,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: calc(env(safe-area-inset-top, 14px) + 8px) 16px calc(env(safe-area-inset-bottom, 14px) + 10px);
+      padding: calc(env(safe-area-inset-top, 14px) + 10px) 18px calc(env(safe-area-inset-bottom, 14px) + 12px);
       box-sizing: border-box;
     }
 
-    /* Üst Başlık & 2 Adımlı Akış Rehberi */
+    /* Üst Başlık — Net & Sade */
     .header {
       text-align: center;
       margin-top: 0;
@@ -67,11 +67,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
     }
 
     .brand-tag {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 1.5px;
       color: var(--accent-gold);
@@ -80,137 +80,64 @@
     }
 
     .title {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: var(--text-primary);
       line-height: 1.2;
     }
 
-    /* 2 Adımlı Mental Model Barı */
-    .steps-flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 4px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      padding: 4px 12px;
-    }
-
-    .step-item {
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.4;
       display: flex;
       align-items: center;
       gap: 5px;
+    }
+
+    .subtitle-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold-light);
       font-size: 11px;
-      font-weight: 600;
-      color: var(--text-secondary);
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
     }
 
-    .step-item.active {
-      color: #ffffff;
-    }
-
-    .step-num {
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--text-secondary);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .step-item.active .step-num {
-      background: var(--accent-gold);
-      color: #0c0e12;
-    }
-
-    .step-arrow {
-      color: var(--text-muted);
-      font-size: 10px;
-    }
-
-    /* Orta Kısım: Seçenekler */
+    /* Orta Kısım: Yorum Kartları */
     .content {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 10px;
       flex: 1;
       justify-content: center;
-      margin: 6px 0;
+      margin: 10px 0;
       min-height: 0;
     }
 
-    /* Kategori Çipleri (Pills) */
-    .category-pills {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      overflow-x: auto;
-      padding: 2px 2px 4px 2px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      flex-shrink: 0;
-    }
-
-    .category-pills::-webkit-scrollbar {
-      display: none;
-    }
-
-    .pill {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-secondary);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4.5px 10px;
-      border-radius: 16px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-
-    .pill:active {
-      transform: scale(0.95);
-    }
-
-    .pill.active {
-      background: var(--accent-gold);
-      border-color: var(--accent-gold);
-      color: #0c0e12;
-      font-weight: 750;
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
-    }
-
-    .content-header {
+    .content-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 4px;
+      padding: 0 2px;
       flex-shrink: 0;
     }
 
-    .instruction {
-      font-size: 11.5px;
+    .step-hint {
+      font-size: 12px;
       font-weight: 600;
       color: var(--text-secondary);
-      letter-spacing: 0.1px;
     }
 
     .btn-shuffle {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text-primary);
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
@@ -226,16 +153,16 @@
     }
 
     .btn-shuffle svg {
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       color: var(--accent-gold-light);
     }
 
-    /* Yorum Kartları */
+    /* 3 Yorum Kartı */
     .review-cards {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 9px;
       flex: 1;
       justify-content: space-between;
       min-height: 0;
@@ -244,8 +171,8 @@
     .card {
       background: var(--card-bg);
       border: 1.5px solid var(--card-border);
-      border-radius: 13px;
-      padding: 10px 14px;
+      border-radius: 14px;
+      padding: 12px 16px;
       cursor: pointer;
       position: relative;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -263,51 +190,52 @@
     .card.selected {
       background: var(--card-active-bg);
       border-color: var(--card-active-border);
-      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.2);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.22);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       flex-shrink: 0;
     }
 
     .stars {
       color: var(--accent-gold);
-      font-size: 13px;
-      letter-spacing: 1.5px;
+      font-size: 14px;
+      letter-spacing: 2px;
     }
 
     .copy-badge {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--text-muted);
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 2.5px 7px;
-      border-radius: 5px;
+      padding: 3px 8px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
-      gap: 3.5px;
+      gap: 4px;
       transition: all 0.2s ease;
     }
 
     .copy-badge svg {
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
     }
 
     .card.selected .copy-badge {
       color: #ffffff;
       background: var(--success-green);
       border-color: var(--success-green);
+      font-weight: 700;
     }
 
     .card-text {
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: 13.5px;
+      line-height: 1.48;
       color: #f1f5f9;
       font-weight: 450;
       transition: opacity 0.2s ease;
@@ -317,44 +245,13 @@
       overflow: hidden;
     }
 
-    /* Alt Bölüm: Fotoğraf Uyarısı & Ergonomik Google Butonu */
+    /* Alt Bölüm: Tek & Net Eylem Çağrısı */
     .footer {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       flex-shrink: 0;
-    }
-
-    .photo-tip-banner {
-      width: 100%;
-      background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.28);
-      border-radius: 10px;
-      padding: 6px 10px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      box-sizing: border-box;
-    }
-
-    .badge-important {
-      background: var(--accent-gold);
-      color: #0c0e12;
-      font-size: 9.5px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      padding: 2px 5px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-
-    .photo-tip-text {
-      font-size: 11px;
-      line-height: 1.35;
-      color: #f1f5f9;
-      font-weight: 500;
     }
 
     .btn-google {
@@ -362,16 +259,16 @@
       background: linear-gradient(135deg, #d9232e 0%, #b91c1c 100%);
       color: #ffffff;
       font-weight: 700;
-      font-size: 14.5px;
-      padding: 13px 16px;
-      border-radius: 13px;
+      font-size: 15px;
+      padding: 15px 18px;
+      border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      box-shadow: 0 5px 16px rgba(217, 35, 46, 0.35);
+      gap: 10px;
+      box-shadow: 0 5px 18px rgba(217, 35, 46, 0.38);
       transition: all 0.2s ease;
       text-decoration: none;
     }
@@ -381,8 +278,8 @@
     }
 
     .google-icon-box {
-      width: 24px;
-      height: 24px;
+      width: 25px;
+      height: 25px;
       background: #ffffff;
       border-radius: 50%;
       display: flex;
@@ -393,60 +290,49 @@
     }
 
     .google-icon-box svg {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
     }
 
-    .footer-hint {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-      font-weight: 400;
-    }
-
-    .footer-hint strong {
+    .footer-guide {
+      font-size: 11.5px;
       color: var(--text-secondary);
+      text-align: center;
+      line-height: 1.4;
+      padding: 0 4px;
+    }
+
+    .footer-guide strong {
+      color: #ffffff;
+    }
+
+    .photo-hint {
+      color: var(--accent-gold-light);
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <!-- Üst Başlık & 2 Adımlı Rehber -->
+  <!-- Üst Başlık — Anında Anlaşılır -->
   <header class="header">
     <span class="brand-tag">Ramen City Eskişehir</span>
-    <h1 class="title">Deneyiminizi Değerlendirin</h1>
-    
-    <div class="steps-flow">
-      <div class="step-item active">
-        <span class="step-num">1</span>
-        <span class="step-txt">Yorumunu Seç</span>
-      </div>
-      <span class="step-arrow">➔</span>
-      <div class="step-item" id="step-2-indicator">
-        <span class="step-num">2</span>
-        <span class="step-txt">Google'da Paylaş</span>
-      </div>
-    </div>
+    <h1 class="title">Bir Yorum Seçin</h1>
+    <p class="subtitle">
+      <span class="subtitle-badge">Otomatik Kopyalanır</span>
+      <span>Beğendiğiniz yoruma dokunmanız yeterlidir.</span>
+    </p>
   </header>
 
-  <!-- Orta Bölüm: Kategori Çipleri & Kartlar -->
+  <!-- Orta Bölüm: 3 Yorum Kartı -->
   <main class="content">
-    <!-- Kategori Filtre Çipleri -->
-    <div class="category-pills">
-      <button type="button" class="pill active" onclick="changeCategory('all')">⭐ Tümü</button>
-      <button type="button" class="pill" onclick="changeCategory('fast')">⚡ Hızlı Servis</button>
-      <button type="button" class="pill" onclick="changeCategory('food')">🍜 Lezzet & Menü</button>
-      <button type="button" class="pill" onclick="changeCategory('ambiance')">🌙 Ambiyans</button>
-      <button type="button" class="pill" onclick="changeCategory('service')">🧼 Hijyen & İlgi</button>
-    </div>
-
-    <div class="content-header">
-      <span class="instruction">Beğendiğiniz yoruma dokunun (otomatik kopyalanır)</span>
+    <div class="content-top-row">
+      <span class="step-hint">1. Adım: Yorumunuza dokunun</span>
       <button type="button" class="btn-shuffle" onclick="shuffleReviews()" title="Farklı seçenekler getir">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
-        <span>Farklı Yorum</span>
+        <span>Farklı Yorumlar</span>
       </button>
     </div>
 
@@ -495,13 +381,8 @@
     </div>
   </main>
 
-  <!-- Alt Bölüm: Fotoğraf Uyarısı & Google Butonu -->
+  <!-- Alt Bölüm: 2. Adım — Google Haritalar'da Paylaş -->
   <footer class="footer">
-    <div class="photo-tip-banner">
-      <span class="badge-important">ÖNEMLİ</span>
-      <p class="photo-tip-text">📸 Masada çektiğiniz yemek fotoğrafını da eklerseniz yorumumuz Google Haritalar'da en üstte öne çıkıyor!</p>
-    </div>
-
     <a href="https://www.google.com/maps/place/Ramen+City+Eski%C5%9Fehir/data=!4m7!3m6!1s0x14cc15720d92f2cf:0x2efcb48fdf4d44f6!8m2!3d39.7838381!4d30.5005009!9m1!1b1" id="google-review-btn" class="btn-google" onclick="handleGoogleClick(event)">
       <div class="google-icon-box">
         <svg viewBox="0 0 24 24">
@@ -513,7 +394,11 @@
       </div>
       <span id="btn-text">Google Haritalar'da Paylaş ➔</span>
     </a>
-    <p class="footer-hint">İpucu: Yorum panoya kopyalandı; Google'da yorum alanına basılı tutup <strong>"Yapıştır"</strong> demeniz yeterlidir.</p>
+    
+    <p class="footer-guide">
+      2. Adım: Butona basıp açılan ekranda <strong>5 yıldız verin</strong> ve yorumu <strong>yapıştırın</strong>.  
+      <span class="photo-hint">📸 Çektiğiniz fotoğrafı eklemeyi unutmayın!</span>
+    </p>
   </footer>
 
   <script>
@@ -521,7 +406,6 @@
     const GOOGLE_REVIEW_URL = 'https://www.google.com/maps/place/Ramen+City+Eski%C5%9Fehir/data=!4m7!3m6!1s0x14cc15720d92f2cf:0x2efcb48fdf4d44f6!8m2!3d39.7838381!4d30.5005009!9m1!1b1';
     
     let copiedText = null;
-    let currentCategory = 'all';
 
     // -------------------------------------------------------------
     // ZENGİN & AKILLI YORUM HAVUZU (80 Farklı Özgün & Doğal Yorum)
@@ -551,7 +435,7 @@
       '"Menüdeki çeşitlilik ve lezzet kalitesi mükemmel. Gani Bey\'in samimi ve dikkatli servisi bizi çok etkiledi."'
     ];
 
-    // 2. Hızlı Servis & Zaman Odaklı (20 Adet)
+    // 2. Hızlı Servis & Öğle Saatleri Odaklı (20 Adet)
     const POOL_FAST = [
       '"Öğle arasında kısıtlı vaktimiz vardı ama siparişlerimiz inanılmaz hızlı geldi. Gani Bey\'in pratikliği ve hızı için çok teşekkürler."',
       '"Mekan oldukça kalabalık olmasına rağmen hiç beklemedik. Servisimizle ilgilenen Gani Bey siparişleri dakikalar içinde sıcacık getirdi."',
@@ -623,45 +507,24 @@
       '"Eskişehir\'de misafirperverliğiyle fark yaratan harika bir ekip. Gani Bey\'in pozitif enerjisine bayıldık."'
     ];
 
-    // Yardımcı: Rastgele N farklı eleman seçme
-    function getRandomUnique(array, count) {
-      const shuffled = [...array].sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, count);
-    }
-
-    // Kategori Değiştirme
-    function changeCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.pill').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
-      shuffleReviews();
+    function getRandomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
     }
 
     // Yorumları Seç & Kartlara Doldur
     function shuffleReviews() {
-      let selected = [];
       const hour = new Date().getHours();
       const isLunchTime = hour >= 11 && hour < 17;
       const timePool = isLunchTime ? POOL_FAST : POOL_AMBIANCE;
 
-      if (currentCategory === 'all') {
-        // Tümü modunda: 1 Lezzet, 1 Zaman/Ambiyans, 1 Hizmet
-        selected = [
-          getRandomUnique(POOL_FOOD, 1)[0],
-          getRandomUnique(timePool, 1)[0],
-          getRandomUnique(POOL_SERVICE, 1)[0]
-        ];
-      } else if (currentCategory === 'fast') {
-        selected = getRandomUnique(POOL_FAST, 3);
-      } else if (currentCategory === 'food') {
-        selected = getRandomUnique(POOL_FOOD, 3);
-      } else if (currentCategory === 'ambiance') {
-        selected = getRandomUnique(POOL_AMBIANCE, 3);
-      } else if (currentCategory === 'service') {
-        selected = getRandomUnique(POOL_SERVICE, 3);
-      }
+      // 1. Kart: Lezzet & Sunum
+      // 2. Kart: Öğle Hızı veya Akşam Ambiyansı
+      // 3. Kart: Misafirperverlik & Temizlik
+      const selected = [
+        getRandomItem(POOL_FOOD),
+        getRandomItem(timePool),
+        getRandomItem(POOL_SERVICE)
+      ];
 
       for (let i = 1; i <= 3; i++) {
         const textEl = document.getElementById(`card-text-${i}`);
@@ -674,7 +537,7 @@
         }
       }
 
-      // Kart seçim durumunu sıfırla, 1. kartı varsayılan seç
+      // Kart seçim durumunu sıfırla, 1. kartı varsayılan olarak seç ve kopyala
       setTimeout(() => {
         const firstCard = document.querySelector('.card');
         if (firstCard) {
@@ -690,7 +553,7 @@
     });
 
     function fireConfetti() {
-      const count = 100;
+      const count = 90;
       const defaults = {
         origin: { y: 0.65 },
         colors: ['#d9232e', '#fbbf24', '#f59e0b', '#ffffff', '#10b981']
@@ -733,22 +596,25 @@
         `;
       }
 
-      // Adım 2 İndikatörünü Vurgula
-      const step2 = document.getElementById('step-2-indicator');
-      if (step2) {
-        step2.classList.add('active');
-      }
-
-      // Buton Metnini Dinamik Güncelle
+      // Buton Metnini Canlı & Net Güncelle
       const btnText = document.getElementById('btn-text');
       if (btnText) {
-        btnText.textContent = "Seçilen Yorumla Google Haritalar'ı Aç ➔";
+        btnText.textContent = "Google Haritalar'da Paylaş ➔";
       }
 
       const p = document.getElementById(`card-text-${id}`) || element.querySelector('.card-text');
       copiedText = p.textContent.replace(/^"|"$/g, '');
 
       copyToClipboard(copiedText);
+
+      if (triggerConfetti) {
+        // Küçük tatlı dokunuş
+        confetti({
+          particleCount: 20,
+          spread: 40,
+          origin: { y: 0.6 }
+        });
+      }
     }
 
     function copyToClipboard(text) {
