@@ -26,7 +26,7 @@
       --bg-main: #0c0e12;
       --card-bg: #151821;
       --card-border: #232733;
-      --card-active-bg: rgba(245, 158, 11, 0.09);
+      --card-active-bg: rgba(245, 158, 11, 0.1);
       --card-active-border: #f59e0b;
       
       --text-primary: #ffffff;
@@ -35,7 +35,6 @@
       
       --accent-gold: #f59e0b;
       --accent-gold-light: #fbbf24;
-      --google-btn-bg: #d9232e;
       --success-green: #10b981;
     }
 
@@ -55,11 +54,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: calc(env(safe-area-inset-top, 14px) + 10px) 18px calc(env(safe-area-inset-bottom, 14px) + 12px);
+      padding: calc(env(safe-area-inset-top, 14px) + 8px) 16px calc(env(safe-area-inset-bottom, 14px) + 8px);
       box-sizing: border-box;
     }
 
-    /* Üst Başlık & 1. ve 2. Adım Rehberi */
+    /* Üst Başlık & Rehber */
     .header {
       text-align: center;
       margin-top: 0;
@@ -84,11 +83,11 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.035);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
+      border-radius: 11px;
       padding: 7px 11px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
     }
 
     .step-card {
@@ -103,7 +102,7 @@
     .step-pill {
       background: var(--accent-gold);
       color: #0c0e12;
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 800;
       letter-spacing: 0.5px;
       padding: 2.5px 6px;
@@ -128,14 +127,14 @@
       white-space: nowrap;
     }
 
-    /* Orta Kısım: Yorum Kartları */
+    /* Orta Kısım: 5 Yorum Kartı */
     .content {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 7px;
       flex: 1;
       justify-content: center;
-      margin: 10px 0;
+      margin: 6px 0;
       min-height: 0;
     }
 
@@ -148,7 +147,7 @@
     }
 
     .step-hint {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--text-secondary);
     }
@@ -157,9 +156,9 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text-primary);
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 4px 9px;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
@@ -175,16 +174,16 @@
     }
 
     .btn-shuffle svg {
-      width: 13px;
-      height: 13px;
+      width: 12px;
+      height: 12px;
       color: var(--accent-gold-light);
     }
 
-    /* 3 Yorum Kartı */
+    /* 5 Yorum Kartı Listesi */
     .review-cards {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 6.5px;
       flex: 1;
       justify-content: space-between;
       min-height: 0;
@@ -192,9 +191,9 @@
 
     .card {
       background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 14px;
-      padding: 12px 16px;
+      border: 1.2px solid var(--card-border);
+      border-radius: 12px;
+      padding: 8px 12px;
       cursor: pointer;
       position: relative;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -207,35 +206,36 @@
 
     .card:active {
       transform: scale(0.985);
+      border-color: var(--accent-gold);
     }
 
     .card.selected {
       background: var(--card-active-bg);
       border-color: var(--card-active-border);
-      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.22);
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.2);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       flex-shrink: 0;
     }
 
     .stars {
       color: var(--accent-gold);
-      font-size: 14px;
-      letter-spacing: 2px;
+      font-size: 12.5px;
+      letter-spacing: 1.5px;
     }
 
     .copy-badge {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 3px 8px;
+      color: var(--accent-gold-light);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2.5px 7px;
       border-radius: 6px;
       display: flex;
       align-items: center;
@@ -244,11 +244,11 @@
     }
 
     .copy-badge svg {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
     }
 
-    .card.selected .copy-badge {
+    .copy-badge.copied {
       color: #ffffff;
       background: var(--success-green);
       border-color: var(--success-green);
@@ -256,111 +256,57 @@
     }
 
     .card-text {
-      font-size: 13.5px;
-      line-height: 1.48;
+      font-size: 12px;
+      line-height: 1.42;
       color: #f1f5f9;
       font-weight: 450;
       transition: opacity 0.2s ease;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    /* Alt Bölüm: Tek & Net Eylem Çağrısı */
+    /* Alt Bölüm */
     .footer {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .btn-google {
-      width: 100%;
-      background: linear-gradient(135deg, #d9232e 0%, #b91c1c 100%);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: clamp(12.5px, 3.5vw, 14.5px);
-      white-space: nowrap;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 9px;
-      box-shadow: 0 5px 18px rgba(217, 35, 46, 0.38);
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    #btn-text {
-      white-space: nowrap;
-    }
-
-    .btn-google:active {
-      transform: scale(0.975);
-    }
-
-    .google-icon-box {
-      width: 25px;
-      height: 25px;
-      background: #ffffff;
-      border-radius: 50%;
-      display: flex;
       align-items: center;
-      justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .google-icon-box svg {
-      width: 15px;
-      height: 15px;
+      padding-top: 3px;
     }
 
     .footer-guide {
-      font-size: 11.5px;
+      font-size: 10.5px;
       color: var(--text-secondary);
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.35;
       padding: 0 4px;
     }
 
     .footer-guide strong {
       color: #ffffff;
     }
-
-    .photo-hint {
-      color: var(--accent-gold-light);
-      font-weight: 600;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Üst Başlık & 1. ve 2. Adım Rehberi -->
+  <!-- Üst Başlık & Rehber -->
   <header class="header">
     <span class="brand-tag">Ramen City Eskişehir</span>
     
     <div class="steps-guide">
       <div class="step-card">
-        <span class="step-pill">1. ADIM</span>
-        <span class="step-text">Beğendiğiniz yorumu seçin <span class="badge-auto">(Otomatik Kopyalanır)</span></span>
-      </div>
-      <div class="step-card">
-        <span class="step-pill">2. ADIM</span>
-        <span class="step-text">Alttaki butona tıklayıp Google'a yapıştırın</span>
+        <span class="step-pill">1 DOKUNUŞ</span>
+        <span class="step-text">Beğendiğiniz yoruma dokunun, <span class="badge-auto">kopyalanıp Google açılsın</span></span>
       </div>
     </div>
   </header>
 
-  <!-- Orta Bölüm: 3 Yorum Kartı -->
+  <!-- Orta Bölüm: 5 Yorum Kartı -->
   <main class="content">
     <div class="content-top-row">
-      <span class="step-hint">Yorum Seçenekleri</span>
+      <span class="step-hint">Yorum Seçenekleri (Dokunun & Paylaşın)</span>
       <button type="button" class="btn-shuffle" onclick="shuffleReviews()" title="Farklı seçenekler getir">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -370,80 +316,94 @@
     </div>
 
     <div class="review-cards">
-      <!-- Kart 1 -->
+      <!-- Kart 1 (Lezzet & Sunum) -->
       <div class="card" onclick="handleCardClick(this, 1)">
         <div class="card-top">
           <span class="stars">★★★★★</span>
           <span class="copy-badge" id="badge-1">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            <span class="badge-label">Kopyala & Git</span>
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
-            <span class="badge-label">Kopyala</span>
           </span>
         </div>
         <p class="card-text" id="card-text-1"></p>
       </div>
 
-      <!-- Kart 2 -->
+      <!-- Kart 2 (Hız & Servis) -->
       <div class="card" onclick="handleCardClick(this, 2)">
         <div class="card-top">
           <span class="stars">★★★★★</span>
           <span class="copy-badge" id="badge-2">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            <span class="badge-label">Kopyala & Git</span>
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
-            <span class="badge-label">Kopyala</span>
           </span>
         </div>
         <p class="card-text" id="card-text-2"></p>
       </div>
 
-      <!-- Kart 3 -->
+      <!-- Kart 3 (Ambiyans & Ortam) -->
       <div class="card" onclick="handleCardClick(this, 3)">
         <div class="card-top">
           <span class="stars">★★★★★</span>
           <span class="copy-badge" id="badge-3">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            <span class="badge-label">Kopyala & Git</span>
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
-            <span class="badge-label">Kopyala</span>
           </span>
         </div>
         <p class="card-text" id="card-text-3"></p>
       </div>
+
+      <!-- Kart 4 (Temizlik & Karşılama) -->
+      <div class="card" onclick="handleCardClick(this, 4)">
+        <div class="card-top">
+          <span class="stars">★★★★★</span>
+          <span class="copy-badge" id="badge-4">
+            <span class="badge-label">Kopyala & Git</span>
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </div>
+        <p class="card-text" id="card-text-4"></p>
+      </div>
+
+      <!-- Kart 5 (Tavsiye & Deneyim) -->
+      <div class="card" onclick="handleCardClick(this, 5)">
+        <div class="card-top">
+          <span class="stars">★★★★★</span>
+          <span class="copy-badge" id="badge-5">
+            <span class="badge-label">Kopyala & Git</span>
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </div>
+        <p class="card-text" id="card-text-5"></p>
+      </div>
     </div>
   </main>
 
-  <!-- Alt Bölüm: 2. Adım — Google Haritalar'da Paylaş -->
+  <!-- Alt Bölüm: Hatırlatma -->
   <footer class="footer">
-    <a href="https://www.google.com/maps/place/Ramen+City+Eski%C5%9Fehir/data=!4m7!3m6!1s0x14cc15720d92f2cf:0x2efcb48fdf4d44f6!8m2!3d39.7838381!4d30.5005009!9m1!1b1" id="google-review-btn" class="btn-google" onclick="handleGoogleClick(event)">
-      <div class="google-icon-box">
-        <svg viewBox="0 0 24 24">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-        </svg>
-      </div>
-      <span id="btn-text">Google'da yorum yapmak için tıkla</span>
-    </a>
-    
     <p class="footer-guide">
-      📸 Çektiğiniz fotoğrafı eklemeyi ve panodaki yorumu yapıştırmayı unutmayın!
+      📸 Google Haritalar açılınca panodaki yorumu yapıştırıp fotoğrafınızı ekleyebilirsiniz.
     </p>
   </footer>
 
   <script>
     // Ramen City Eskişehir Google Haritalar Yorumlar Sekmesi Bağlantısı
     const GOOGLE_REVIEW_URL = 'https://www.google.com/maps/place/Ramen+City+Eski%C5%9Fehir/data=!4m7!3m6!1s0x14cc15720d92f2cf:0x2efcb48fdf4d44f6!8m2!3d39.7838381!4d30.5005009!9m1!1b1';
-    
-    let copiedText = null;
 
     // -------------------------------------------------------------
-    // ZENGİN & AKILLI YORUM HAVUZU (80 Farklı Özgün & Doğal Yorum)
+    // ZENGİN YORUM HAVUZU (125 Farklı Özgün & Doğal Yorum, 5 Kategori)
     // -------------------------------------------------------------
 
-    // 1. Genel Lezzet, Porsiyon & Fotoğraf Odaklı (20 Adet)
+    // 1. Genel Lezzet, Porsiyon & Fotoğraf Odaklı (25 Adet)
     const POOL_FOOD = [
       '"Yemeklerin lezzeti ve porsiyonların doyuruculuğu tam kararındaydı. Fotoğrafını da ekledim, sunum harikaydı. Gani Bey\'e ilgisi için teşekkürler."',
       '"Eskişehir\'de yediğimiz en lezzetli Uzak Doğu yemekleriydi. Siparişleri verirken bize çok yardımcı olan Gani Bey\'in güler yüzü yeter."',
@@ -464,10 +424,15 @@
       '"Yemeklerin sıcaklığı, sunum zarafeti ve lezzeti tek kelimeyle kusursuzdu. Gani Bey\'e emeği için teşekkür ederiz."',
       '"Eskişehir\'de lezzet çıtasını çok yukarı taşımışlar. Gani arkadaşımızın güler yüzlü servisiyle keyfimiz ikiye katlandı."',
       '"Görseldeki gibi zengin ve taptaze bir sunumla karşılaştık. Masamızla ilgilenen Gani Bey çok kibar ve ilgiliydi."',
-      '"Menüdeki çeşitlilik ve lezzet kalitesi mükemmel. Gani Bey\'in samimi ve dikkatli servisi bizi çok etkiledi."'
+      '"Menüdeki çeşitlilik ve lezzet kalitesi mükemmel. Gani Bey\'in samimi ve dikkatli servisi bizi çok etkiledi."',
+      '"Ramen suyunun aroması ve noodle kıvamı efsaneydi. Masamıza bakan Gani Bey\'in ilgisi ve alakası için çok teşekkürler."',
+      '"Eskişehir\'de böylesine otantik ve özenli Uzak Doğu lezzetleri bulmak büyük şans. Gani Bey servis boyunca çok nazikti."',
+      '"Tabakların doluluğu ve garnitürlerin tazeliği harikaydı. Gani arkadaşımıza titiz ve hızlı servisi için minnettarız."',
+      '"Hem göze hem damağa hitap eden enfes tabaklar geldi. Gani Bey\'in güler yüzü ve profesyonelliği deneyimimizi taçlandırdı."',
+      '"Yemeklerin her bir lokması ayrı lezzetliydi, porsiyonlar çok doyurucu. Servisteki Gani Bey\'e emekleri için teşekkür ederiz."'
     ];
 
-    // 2. Hızlı Servis & Öğle Saatleri Odaklı (20 Adet)
+    // 2. Hızlı Servis & Öğle Saatleri Odaklı (25 Adet)
     const POOL_FAST = [
       '"Öğle arasında kısıtlı vaktimiz vardı ama siparişlerimiz inanılmaz hızlı geldi. Gani Bey\'in pratikliği ve hızı için çok teşekkürler."',
       '"Mekan oldukça kalabalık olmasına rağmen hiç beklemedik. Servisimizle ilgilenen Gani Bey siparişleri dakikalar içinde sıcacık getirdi."',
@@ -488,10 +453,15 @@
       '"Bekleme süresi neredeyse sıfırdı, yemekler sıcacıktı. Gani arkadaşımızın temposu ve dikkati harikaydı."',
       '"Hem lezzetli hem de bu kadar seri bir servis bulmak zor. Gani Bey\'in ilgisi ve hızı için tebrik ederim."',
       '"Öğle arasında vakit kaybetmeden lezzetli bir yemek yiyebildik. Gani Bey masamızla baştan sona çok hızlı ilgilendi."',
-      '"Siparişlerin hazırlanma hızı ve masaya sunumu mükemmeldi. Gani arkadaşımıza hızı ve nezaketi için teşekkürler."'
+      '"Siparişlerin hazırlanma hızı ve masaya sunumu mükemmeldi. Gani arkadaşımıza hızı ve nezaketi için teşekkürler."',
+      '"Dolu bir salonda bu kadar çabuk ve eksiksiz servis almak harika. Gani Bey\'in enerjisi ve hızı gerçekten muazzam."',
+      '"Mola saatinde beklemeden sıcacık yemek yemek büyük konfor. Servisimizle ilgilenen Gani Bey çok pratik ve nazikti."',
+      '"Zamanımız çok azdı ancak Gani arkadaşımız sayesinde hiçbir gecikme yaşamadan harika bir yemek yedik."',
+      '"Siparişimiz ışık hızında masaya ulaştı, her şey kusursuzdu. Gani Bey\'e ilgisi ve seriliği için teşekkürler."',
+      '"Mekan kalabalık olmasına rağmen siparişler anında masadaydı. Gani arkadaşımızın hızlı ve kibar servisine hayran kaldık."'
     ];
 
-    // 3. Ambiyans, Müzik & Akşam Ortamı Odaklı (20 Adet)
+    // 3. Ambiyans, Müzik & Akşam Ortamı Odaklı (25 Adet)
     const POOL_AMBIANCE = [
       '"Akşam yemeği için geldik, mekanın ışıklandırması ve müzikleri çok keyifliydi. Gani Bey\'in samimi ilgisi akşamımızı güzelleştirdi."',
       '"Restoranın çok tatlı ve dinlendirici bir atmosferi var. Masamızla ilgilenen Gani Bey pozitif enerjisiyle ortamı daha da güzelleştirdi."',
@@ -512,10 +482,15 @@
       '"Hem sakin hem de çok keyifli bir akşam yemeği yedik. Gani Bey\'in saygılı ve ilgili servisi için teşekkürler."',
       '"Akşam saatlerinde mekanın enerjisi bambaşka güzel. Masamızla ilgilenen Gani Bey sayesinde harika vakit geçirdik."',
       '"Ortamın sıcaklığı ve çalan müzikler çok dinlendiriciydi. Gani arkadaşımızın pozitif yaklaşımı akşamımıza neşe kattı."',
-      '"Eskişehir\'de kaliteli atmosfer arayanların ilk tercihi olmalı. Gani Bey\'in kibarlığı ve ilgisi takdire şayan."'
+      '"Eskişehir\'de kaliteli atmosfer arayanların ilk tercihi olmalı. Gani Bey\'in kibarlığı ve ilgisi takdire şayan."',
+      '"Loş ışıkları, arka plandaki hoş müzikleriyle Eskişehir\'de en sevdiğimiz durak oldu. Gani Bey\'e sıcak servisi için teşekkürler."',
+      '"Akşam yemeği için harika bir ambiyans, kendinizi çok özel hissediyorsunuz. Gani arkadaşımızın ilgisi bizi çok mutlu etti."',
+      '"Dekorasyon ve mekanın Uzak Doğu teması çok başarılı. Masamıza bakan Gani Bey son derece ilgili ve güler yüzlüydü."',
+      '"Hem kafa dinlemek hem de enfes bir yemek yemek için birebir. Gani Bey masamızla başından sonuna çok güzel ilgilendi."',
+      '"Sıcak, samimi ve estetik bir atmosfer. Gani arkadaşımızın saygılı servisi sayesinde akşamımız çok keyifli geçti."'
     ];
 
-    // 4. Misafirperverlik, Temizlik & Genel Hizmet Odaklı (20 Adet)
+    // 4. Misafirperverlik, Temizlik & Genel Hizmet Odaklı (25 Adet)
     const POOL_SERVICE = [
       '"Mekan pırıl pırıl, masalar tertemizdi. Servis ekibinden Gani Bey\'in saygılı ve güler yüzlü yaklaşımı için teşekkür ederiz."',
       '"Kapıdan girdiğimiz andan itibaren çok güzel ağırlandık. Masamıza bakan Gani Bey son derece kibar ve profesyoneldi."',
@@ -536,58 +511,95 @@
       '"Temizlik konusunda en ufak bir soru işareti bırakmayan ferah bir mekan. Gani Bey\'e misafirperverliği için sevgiler."',
       '"Profesyonel ve aynı zamanda çok samimi bir servis aldık. Gani Bey masamızı bir an olsun ilgisiz bırakmadı."',
       '"Detaylara gösterilen özen ve güler yüz harikaydı. Gani arkadaşımızın nazik servisi için çok teşekkür ederiz."',
-      '"Eskişehir\'de misafirperverliğiyle fark yaratan harika bir ekip. Gani Bey\'in pozitif enerjisine bayıldık."'
+      '"Eskişehir\'de misafirperverliğiyle fark yaratan harika bir ekip. Gani Bey\'in pozitif enerjisine bayıldık."',
+      '"Açık mutfak düzeni ve masaların temizliği bize tam güven verdi. Gani Bey\'in kibar ve özenli tavrı harikaydı."',
+      '"Mekanın tertemiz havası ve personelin saygısı insanı çok iyi hissettiriyor. Gani arkadaşımıza güler yüzü için teşekkürler."',
+      '"Masaların hijyeni, peçetelerden bardaklara kadar her detay tertemizdi. Gani Bey çok ilgili ve nazik bir servis sundu."',
+      '"İçeri girdiğiniz andan çıkana kadar süren harika bir misafirperverlik. Gani Bey\'e özverili çalışması için teşekkürler."',
+      '"Eskişehir\'de servis kalitesiyle örnek gösterilecek bir işletme. Gani arkadaşımızın pozitif ve samimi ilgisine teşekkür ederiz."'
+    ];
+
+    // 5. Menü Tavsiyeleri, Deneyim & Müdavimlik (25 Adet)
+    const POOL_RECOMMEND = [
+      '"Menüde ne seçeceğimizi bilememiştik, Gani Bey harika tavsiyelerde bulundu. Önerdiği her şeye bayıldık."',
+      '"Eskişehir\'de Uzak Doğu mutfağı denemek isteyen herkese ilk önerim burası olur. Gani Bey\'e samimi ilgisi için teşekkürler."',
+      '"Fiyat/performans ve lezzet dengesi gerçekten çok başarılı. Masamıza bakan Gani arkadaşımız her detayla mükemmel ilgilendi."',
+      '"Arkadaş grubumuzla geldik ve hepimiz tam not verdik. Gani Bey masamızın tüm isteklerini eksiksiz yerine getirdi."',
+      '"Daha önce farklı şehirlerde de ramen denedim ama buradaki lezzet ve Gani Bey\'in içten servisi bambaşka bir seviye."',
+      '"Tavsiye üzerine geldik ve beklentilerimizin çok ötesinde bulduk. Gani Bey\'in menüdeki yönlendirmeleri tam damak tadımıza uydu."',
+      '"Artık Eskişehir\'deki favori mekanlarımızdan biri oldu. Masamızla ilgilenen Gani arkadaşımıza güler yüzü için sevgiler."',
+      '"Hem porsiyon doyuruculuğu hem de fiyat dengesi çok iyi. Gani Bey\'e nazik ve ilgili servisi için çok teşekkür ederiz."',
+      '"Menüdeki çeşitlilik harika, denemek istediğimiz daha çok şey var. Gani Bey\'in samimi ilgisi sayesinde kesinlikle tekrar geleceğiz."',
+      '"İlk defa ramen deneyen arkadaşım bile hayran kaldı. Siparişlerimizde bize rehberlik eden Gani Bey\'e çok teşekkürler."',
+      '"Öğrenci dostu kaliteli bir mekan, porsiyonlar gayet doyurucu. Gani arkadaşımızın samimiyeti ve ilgisi için teşekkür ederiz."',
+      '"Ailecek çok keyifli bir yemek yedik, çocuklar da lezzetleri çok sevdi. Masamıza bakan Gani Bey son derece kibardı."',
+      '"Her gelişimizde aynı kalite ve aynı güler yüzle karşılaşıyoruz. Gani Bey\'e profesyonel ve sıcak yaklaşımı için teşekkürler."',
+      '"Eskişehir\'de farklı ve kaliteli bir mutfak arayanlar kaçırmasın. Masamızla ilgilenen Gani arkadaşımız harika bir servis sundu."',
+      '"Yemeklerin orijinalliği ve sunumu muhteşemdi. Gani Bey\'in samimi tavsiyelerine güvenip sipariş verdik ve çok memnun kaldık."',
+      '"Hizmet kalitesi, lezzet ve ortam tam bir bütün oluşturmuş. Gani Bey\'e güler yüzlü ilgisi için teşekkürlerimizi iletiyoruz."',
+      '"Masadaki herkes yemeklerden ayrı ayrı çok memnun kaldı. Servisimizle ilgilenen Gani arkadaşımızın emeğine sağlık."',
+      '"Eskişehir\'de böyle özgün bir lezzet durağının olması büyük şans. Gani Bey\'in pozitif yaklaşımı günümüzü neşelendirdi."',
+      '"Fiyatının karşılığını sonuna kadar veren kaliteli bir işletme. Gani Bey masamıza son derece özenli ve ilgili davrandı."',
+      '"Menüdeki zengin seçenekler ve Gani arkadaşımızın doğru tavsiyeleri sayesinde kusursuz bir yemek deneyimi yaşadık."',
+      '"Hafta sonu arkadaş buluşmamız için geldik, herkes çok memnun ayrıldı. Gani Bey\'in ilgisine ve enerjisine teşekkürler."',
+      '"Menüdeki lezzetler tam kıvamında ve çok doyurucu. Gani Bey\'e içtenliği ve harika servis kalitesi için çok teşekkür ederiz."',
+      '"Eskişehir\'e her yolumuz düştüğünde ilk geleceğimiz adres oldu. Masamıza bakan Gani arkadaşımızın eline sağlık."',
+      '"Hem lezzet hem ilgi alaka konusunda 5 yıldızı fazlasıyla hak ediyorlar. Gani Bey\'in güler yüzü için ayrıca teşekkür ederiz."',
+      '"Damak zevkine düşkün olanların mutlaka denemesi gereken bir yer. Gani Bey\'e saygılı ve kusursuz servisi için minnettarız."'
     ];
 
     function getRandomItem(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
 
-    // Yorumları Seç & Kartlara Doldur
+    // 5 Farklı Kategoriden 5 Özgün Yorum Seç & Kartlara Doldur
     function shuffleReviews() {
-      const hour = new Date().getHours();
-      const isLunchTime = hour >= 11 && hour < 17;
-      const timePool = isLunchTime ? POOL_FAST : POOL_AMBIANCE;
-
-      // 1. Kart: Lezzet & Sunum
-      // 2. Kart: Öğle Hızı veya Akşam Ambiyansı
-      // 3. Kart: Misafirperverlik & Temizlik
       const selected = [
-        getRandomItem(POOL_FOOD),
-        getRandomItem(timePool),
-        getRandomItem(POOL_SERVICE)
+        getRandomItem(POOL_FOOD),       // Kart 1: Lezzet & Sunum
+        getRandomItem(POOL_FAST),       // Kart 2: Hızlı Servis & Öğle
+        getRandomItem(POOL_AMBIANCE),   // Kart 3: Ambiyans & Akşam
+        getRandomItem(POOL_SERVICE),    // Kart 4: Temizlik & Karşılama
+        getRandomItem(POOL_RECOMMEND)   // Kart 5: Tavsiye & Müdavimlik
       ];
 
-      for (let i = 1; i <= 3; i++) {
+      for (let i = 1; i <= 5; i++) {
         const textEl = document.getElementById(`card-text-${i}`);
+        const badge = document.getElementById(`badge-${i}`);
+        if (badge) {
+          badge.classList.remove('copied');
+          badge.innerHTML = `
+            <span class="badge-label">Kopyala & Git</span>
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          `;
+        }
+
+        const cardEl = document.querySelectorAll('.card')[i - 1];
+        if (cardEl) {
+          cardEl.classList.remove('selected', 'redirecting');
+        }
+
         if (textEl) {
           textEl.style.opacity = '0';
           setTimeout(() => {
             textEl.textContent = selected[i - 1];
             textEl.style.opacity = '1';
-          }, 140);
+          }, 110);
         }
       }
-
-      // Kart seçim durumunu sıfırla, 1. kartı varsayılan olarak seç ve kopyala
-      setTimeout(() => {
-        const firstCard = document.querySelector('.card');
-        if (firstCard) {
-          handleCardClick(firstCard, 1, false);
-        }
-      }, 160);
     }
 
-    // Sayfa Açıldığında
+    // Sayfa Açıldığında Rastgele 5 Yorum Yükle ve Konfeti Patlat
     window.addEventListener('load', () => {
       shuffleReviews();
       fireConfetti();
     });
 
     function fireConfetti() {
-      const count = 90;
+      const count = 75;
       const defaults = {
-        origin: { y: 0.65 },
+        origin: { y: 0.6 },
         colors: ['#d9232e', '#fbbf24', '#f59e0b', '#ffffff', '#10b981']
       };
 
@@ -597,56 +609,49 @@
         }));
       }
 
-      fire(0.25, { spread: 26, startVelocity: 45 });
+      fire(0.25, { spread: 26, startVelocity: 40 });
       fire(0.2, { spread: 60 });
-      fire(0.35, { spread: 80, decay: 0.91, scalar: 0.8 });
+      fire(0.35, { spread: 75, decay: 0.91, scalar: 0.8 });
     }
 
-    // Kart Seçildiğinde
-    function handleCardClick(element, id, triggerConfetti = true) {
-      document.querySelectorAll('.card').forEach((card, index) => {
-        card.classList.remove('selected');
-        const badge = document.getElementById(`badge-${index + 1}`);
-        if (badge) {
-          badge.innerHTML = `
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-            </svg>
-            <span class="badge-label">Kopyala</span>
-          `;
-        }
-      });
+    // Kart Seçildiğinde: Panoya Kopyala ve Anında Google Haritalar'a Yönlendir
+    function handleCardClick(element, id) {
+      if (element.classList.contains('redirecting')) return;
+      element.classList.add('redirecting');
 
+      document.querySelectorAll('.card').forEach((card) => {
+        card.classList.remove('selected');
+      });
       element.classList.add('selected');
+
       const activeBadge = document.getElementById(`badge-${id}`);
       if (activeBadge) {
+        activeBadge.classList.add('copied');
         activeBadge.innerHTML = `
-          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="width: 12px; height: 12px;">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
           </svg>
-          <span class="badge-label">Kopyalandı</span>
+          <span class="badge-label">Kopyalandı! Açılıyor...</span>
         `;
       }
 
-      // Buton Metnini Canlı & Net Güncelle
-      const btnText = document.getElementById('btn-text');
-      if (btnText) {
-        btnText.textContent = "Google'da yorum yapmak için tıkla";
-      }
-
       const p = document.getElementById(`card-text-${id}`) || element.querySelector('.card-text');
-      copiedText = p.textContent.replace(/^"|"$/g, '');
+      const textToCopy = p.textContent.replace(/^"|"$/g, '');
 
-      copyToClipboard(copiedText);
+      // 1. Panoya Anında Kopyala
+      copyToClipboard(textToCopy);
 
-      if (triggerConfetti) {
-        // Küçük tatlı dokunuş
-        confetti({
-          particleCount: 20,
-          spread: 40,
-          origin: { y: 0.6 }
-        });
-      }
+      // 2. Mini kutlama konfetisi
+      confetti({
+        particleCount: 22,
+        spread: 40,
+        origin: { y: 0.55 }
+      });
+
+      // 3. Google Haritalar'a Aç (Kopyalama işleminin tamamlanması ve görsel onay için 280ms)
+      setTimeout(() => {
+        window.location.href = GOOGLE_REVIEW_URL;
+      }, 280);
     }
 
     function copyToClipboard(text) {
@@ -673,14 +678,6 @@
         console.error('Kopyalama hatası:', err);
       }
       document.body.removeChild(textArea);
-    }
-
-    // Google Butonuna Basıldığında
-    function handleGoogleClick(e) {
-      if (!copiedText) {
-        const firstCardText = (document.getElementById('card-text-1') || document.querySelector('.card .card-text')).textContent.replace(/^"|"$/g, '');
-        copyToClipboard(firstCardText);
-      }
     }
   </script>
 </body>
