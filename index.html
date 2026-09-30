@@ -382,10 +382,10 @@
     let rotationAngle = 0;
 
     // -------------------------------------------------------------
-    // ZENGİN YORUM HAVUZU (125 Farklı Özgün & Doğal Yorum, 5 Kategori)
+    // ZENGİN YORUM HAVUZU (200 Farklı Özgün & Doğal Yorum, 5 Kategori)
     // -------------------------------------------------------------
 
-    // 1. Genel Lezzet, Porsiyon & Fotoğraf Odaklı (25 Adet)
+    // 1. Genel Lezzet, Porsiyon, Ramen & Fotoğraf Odaklı (40 Adet)
     const POOL_FOOD = [
       '"Yemeklerin lezzeti ve porsiyonların doyuruculuğu tam kararındaydı. Fotoğrafını da ekledim, sunum harikaydı. Gani Bey\'e ilgisi için teşekkürler."',
       '"Eskişehir\'de yediğimiz en lezzetli Uzak Doğu yemekleriydi. Siparişleri verirken bize çok yardımcı olan Gani Bey\'in güler yüzü yeter."',
@@ -409,12 +409,27 @@
       '"Menüdeki çeşitlilik ve lezzet kalitesi mükemmel. Gani Bey\'in samimi ve dikkatli servisi bizi çok etkiledi."',
       '"Ramen suyunun aroması ve noodle kıvamı efsaneydi. Masamıza bakan Gani Bey\'in ilgisi ve alakası için çok teşekkürler."',
       '"Eskişehir\'de böylesine otantik ve özenli Uzak Doğu lezzetleri bulmak büyük şans. Gani Bey servis boyunca çok nazikti."',
-      '"Tabakların doluluğu ve garnitürlerin tazeliği harikaydı. Gani arkadaşımıza titiz ve hızlı servisi için minnettarız."',
+      '"Ramenin et suyu, noodle\'ın kıvamı ve malzemeler çok tazeydi. Gani arkadaşımıza titiz ve hızlı servisi için minnettarız."',
       '"Hem göze hem damağa hitap eden enfes tabaklar geldi. Gani Bey\'in güler yüzü ve profesyonelliği deneyimimizi taçlandırdı."',
-      '"Yemeklerin her bir lokması ayrı lezzetliydi, porsiyonlar çok doyurucu. Servisteki Gani Bey\'e emekleri için teşekkür ederiz."'
+      '"Yemeklerin her bir lokması ayrı lezzetliydi, porsiyonlar çok doyurucu. Servisteki Gani Bey\'e emekleri için teşekkür ederiz."',
+      '"Ramenin lezzeti ve içindeki etin yumuşaklığı tek kelimeyle harikaydı. Masamıza bakan Gani arkadaşımızın ilgisi için teşekkürler."',
+      '"Eskişehir\'de gerçek bir ramen deneyimi yaşamak isteyenler mutlaka uğramalı. Gani Bey\'in güler yüzü ve ilgisi harikaydı."',
+      '"Porsiyonlar o kadar büyüktü ki masadan tıka basa doyarak kalktık. Gani Bey servis boyunca çok nazik davrandı."',
+      '"Tavuklu ve dana etli ramenleri denedik, ikisinin de suyu çok derin ve aromatikti. Gani arkadaşımızın eline emeğine sağlık."',
+      '"Uzak Doğu mutfağını hakkıyla yapan ender yerlerden. Görselini de paylaşıyorum, kasesi dopdolu. Gani Bey\'e ilgisi için teşekkürler."',
+      '"Noodle taptazeydi, broth dedikleri çorba kısmı tam kıvamındaydı. Gani arkadaşımız siparişimizde çok yardımcı oldu."',
+      '"Lezzet ve sunum kalitesi İstanbul\'daki ünlü ramen mekanlarını aratmıyor. Gani Bey\'in samimi yaklaşımı bizi çok mutlu etti."',
+      '"Görselde de görebileceğiniz gibi kase dopdolu geliyor, doyuruculuk 10/10. Masamızla ilgilenen Gani Bey çok kibardı."',
+      '"Acı dengesi ve aroması tam istediğim gibiydi. Menü seçiminde yardımcı olan Gani arkadaşımızın tavsiyesi çok başarılıydı."',
+      '"Yemeklerin sıcaklığı hiç bozulmadan masaya ulaştı. Gani Bey çok özenli ve güleryüzlü bir servis sağladı."',
+      '"Fotoğraf çekmeden yiyemedik, sunum gerçekten iştah kabartıcı. Gani Bey\'e ilgisi ve misafirperverliği için sevgiler."',
+      '"Yumurta kıvamı ve noodle dokusu tam kararındaydı. Serviste bize bakan Gani Bey son derece saygılı ve ilgiliydi."',
+      '"Eskişehir\'e böyle kaliteli lezzetler kazandırdıkları için tebrik ederim. Gani arkadaşımızın pozitif enerjisi yeter."',
+      '"Kasedeki her malzemenin tadı ayrı taze ve dengeliydi. Gani Bey\'in özenli sunumu sayesinde çok keyifli bir yemek oldu."',
+      '"Lezzet olarak tam anlamıyla beklentimizin üstüne çıktı. Masamızla ilgilenen Gani Bey\'e teşekkür ederiz."'
     ];
 
-    // 2. Hızlı Servis & Öğle Saatleri Odaklı (25 Adet)
+    // 2. Hızlı Servis & Öğle Saatleri Odaklı (40 Adet)
     const POOL_FAST = [
       '"Öğle arasında kısıtlı vaktimiz vardı ama siparişlerimiz inanılmaz hızlı geldi. Gani Bey\'in pratikliği ve hızı için çok teşekkürler."',
       '"Mekan oldukça kalabalık olmasına rağmen hiç beklemedik. Servisimizle ilgilenen Gani Bey siparişleri dakikalar içinde sıcacık getirdi."',
@@ -440,10 +455,25 @@
       '"Mola saatinde beklemeden sıcacık yemek yemek büyük konfor. Servisimizle ilgilenen Gani Bey çok pratik ve nazikti."',
       '"Zamanımız çok azdı ancak Gani arkadaşımız sayesinde hiçbir gecikme yaşamadan harika bir yemek yedik."',
       '"Siparişimiz ışık hızında masaya ulaştı, her şey kusursuzdu. Gani Bey\'e ilgisi ve seriliği için teşekkürler."',
-      '"Mekan kalabalık olmasına rağmen siparişler anında masadaydı. Gani arkadaşımızın hızlı ve kibar servisine hayran kaldık."'
+      '"Mekan kalabalık olmasına rağmen siparişler anında masadaydı. Gani arkadaşımızın hızlı ve kibar servisine hayran kaldık."',
+      '"Öğle tatili vaktimiz çok kısıtlıydı ama siparişlerimiz jet hızıyla masadaydı. Gani Bey\'e hızı için teşekkür ederiz."',
+      '"Mekandaki hareketliliğe rağmen servis bir an bile aksamadı. Gani arkadaşımız masamızla çok seri ilgilendi."',
+      '"Siparişi verip arkamıza yaslanmamızla sıcacık ramenlerin gelmesi bir oldu. Gani Bey son derece atik ve profesyonel."',
+      '"İş çıkışı aç karnına gittik, dakikalar içinde masamız donatıldı. Gani arkadaşımıza hızı ve ilgisi için teşekkürler."',
+      '"Servis temposu ve ekibin koordinasyonu çok başarılı. Gani Bey her isteğimize anında çözüm üretti."',
+      '"Bekleme süresi minimum düzeydeydi, yemekler dumanı üstünde geldi. Gani Bey\'in dikkati ve pratikliği takdire şayan."',
+      '"Mola saatinde zamanla yarışırken bizi hiç bekletmediler. Masamıza bakan Gani arkadaşımızın eline koluna sağlık."',
+      '"Restoran tıklım tıklım doluyken bile servis saat gibi tıkır tıkır işledi. Gani Bey\'in temposu gerçekten etkileyici."',
+      '"Acelemiz olduğunu belirttik ve Gani Bey inanılmaz hızlı organize olup siparişimizi getirdi, çok teşekkürler."',
+      '"Hızlı ve pratik bir servis almak isteyenlere kesinlikle öneririm. Gani arkadaşımızın enerjisi çok yüksekti."',
+      '"Yemeklerin hazırlanış hızı ve masaya geliş süresi 10 numara. Gani Bey masamızı bir an bile boş bırakmadı."',
+      '"Ders aramızda hızlıca bir şeyler yemek için uğradık, servis hızı sayesinde dersimize tam vaktinde yetiştik. Gani Bey\'e sevgiler."',
+      '"Yoğunluğun en zirve olduğu saatte bile güler yüzünden ve hızından ödün vermeyen Gani arkadaşımıza teşekkürler."',
+      '"Hızlı ama aynı zamanda son derece özenli bir sunum aldık. Masamızla ilgilenen Gani Bey çok pratik ve kibardı."',
+      '"Masaya geliş hızı şaşırtıcı derecede iyiydi, her şey tam istediğimiz gibiydi. Gani Bey\'in ilgisine çok teşekkür ederiz."'
     ];
 
-    // 3. Ambiyans, Müzik & Akşam Ortamı Odaklı (25 Adet)
+    // 3. Ambiyans, Müzik & Akşam Ortamı Odaklı (40 Adet)
     const POOL_AMBIANCE = [
       '"Akşam yemeği için geldik, mekanın ışıklandırması ve müzikleri çok keyifliydi. Gani Bey\'in samimi ilgisi akşamımızı güzelleştirdi."',
       '"Restoranın çok tatlı ve dinlendirici bir atmosferi var. Masamızla ilgilenen Gani Bey pozitif enerjisiyle ortamı daha da güzelleştirdi."',
@@ -469,10 +499,25 @@
       '"Akşam yemeği için harika bir ambiyans, kendinizi çok özel hissediyorsunuz. Gani arkadaşımızın ilgisi bizi çok mutlu etti."',
       '"Dekorasyon ve mekanın Uzak Doğu teması çok başarılı. Masamıza bakan Gani Bey son derece ilgili ve güler yüzlüydü."',
       '"Hem kafa dinlemek hem de enfes bir yemek yemek için birebir. Gani Bey masamızla başından sonuna çok güzel ilgilendi."',
-      '"Sıcak, samimi ve estetik bir atmosfer. Gani arkadaşımızın saygılı servisi sayesinde akşamımız çok keyifli geçti."'
+      '"Sıcak, samimi ve estetik bir atmosfer. Gani arkadaşımızın saygılı servisi sayesinde akşamımız çok keyifli geçti."',
+      '"Mekanın iç tasarımı ve Uzak Doğu esintileri çok keyifli bir ortam yaratmış. Gani Bey\'in ilgisiyle akşamımız çok güzel geçti."',
+      '"Işıklandırması göz yormayan, sakin ve kaliteli bir atmosferi var. Masamıza bakan Gani arkadaşımız son derece kibardı."',
+      '"Akşam saatlerinde çalan müziklerin tınısı ve ortamın samimiyeti çok hoş. Gani Bey masamızla çok güzel ilgilendi."',
+      '"İster tek başınıza kafa dinlemeye gelin ister arkadaşlarınızla, ortam çok huzurlu. Gani arkadaşımıza teşekkürler."',
+      '"Eskişehir\'de Uzak Doğu konseptini en estetik yansıtan yerlerden biri. Gani Bey\'in pozitif tavırları mekana çok yakışıyor."',
+      '"Akşam yemeği için arkadaş grubumuzla geldik, mekanın aurasına bayıldık. Gani Bey masamızı çok samimi ağırladı."',
+      '"Günün tüm yorgunluğunu unutturan sıcak ve modern bir dekorasyon. Masamızla ilgilenen Gani Bey\'e sevgiler."',
+      '"Restoranın havası, oturma alanlarının rahatlığı ve arka fondaki müzikler harikaydı. Gani arkadaşımızın emeğine sağlık."',
+      '"Hafta sonu akşamı çok tatlı bir canlılık vardı, mekanın ruhu insanı sarıyor. Gani Bey çok özenli bir servis sundu."',
+      '"Masa düzeninden ışık seviyesine kadar her detay düşünülmüş. Gani Bey güler yüzü ve nezaketiyle ortamı güzelleştirdi."',
+      '"Loş ışıklı ferah salonu ve sıcak renkleriyle çok dinlendirici. Gani arkadaşımızın profesyonelliği takdire şayan."',
+      '"Akşam sohbetleri için çok ideal, ferah ve huzurlu bir ambiyans. Masamıza bakan Gani Bey son derece saygılıydı."',
+      '"Japon esintili detaylar ve sakin müzikler insanı başka bir yere götürüyor. Gani Bey\'e samimi ilgisi için teşekkürler."',
+      '"Mekanın enerjisi içeri adım attığınız anda sizi iyi hissettiriyor. Gani arkadaşımızın güler yüzlü servisi harikaydı."',
+      '"Gerek görsel dizaynı gerek atmosferiyle Eskişehir\'de benzeri olmayan bir yer. Gani Bey\'in ilgisine çok teşekkür ederiz."'
     ];
 
-    // 4. Misafirperverlik, Temizlik & Genel Hizmet Odaklı (25 Adet)
+    // 4. Misafirperverlik, Temizlik & Genel Hizmet Odaklı (40 Adet)
     const POOL_SERVICE = [
       '"Mekan pırıl pırıl, masalar tertemizdi. Servis ekibinden Gani Bey\'in saygılı ve güler yüzlü yaklaşımı için teşekkür ederiz."',
       '"Kapıdan girdiğimiz andan itibaren çok güzel ağırlandık. Masamıza bakan Gani Bey son derece kibar ve profesyoneldi."',
@@ -498,10 +543,25 @@
       '"Mekanın tertemiz havası ve personelin saygısı insanı çok iyi hissettiriyor. Gani arkadaşımıza güler yüzü için teşekkürler."',
       '"Masaların hijyeni, peçetelerden bardaklara kadar her detay tertemizdi. Gani Bey çok ilgili ve nazik bir servis sundu."',
       '"İçeri girdiğiniz andan çıkana kadar süren harika bir misafirperverlik. Gani Bey\'e özverili çalışması için teşekkürler."',
-      '"Eskişehir\'de servis kalitesiyle örnek gösterilecek bir işletme. Gani arkadaşımızın pozitif ve samimi ilgisine teşekkür ederiz."'
+      '"Eskişehir\'de servis kalitesiyle örnek gösterilecek bir işletme. Gani arkadaşımızın pozitif ve samimi ilgisine teşekkür ederiz."',
+      '"Masalar pırıl pırıl parlıyordu, hijyene verilen önem daha kapıdan girerken belli oluyor. Gani Bey\'e ilgisi için teşekkürler."',
+      '"Çalışanların saygısı, hitap şekli ve nezaketi gerçekten takdir edilesi. Gani arkadaşımız harika bir misafirperverlik gösterdi."',
+      '"Açık mutfağın temizliği ve masaların düzeni tam not aldı. Masamıza bakan Gani Bey çok titiz ve güler yüzlüydü."',
+      '"Restorana girdiğimiz andan itibaren çok kibar karşılandık. Gani arkadaşımızın içten ve samimi ilgisi çok hoşumuza gitti."',
+      '"Eskişehir\'de müşteri memnuniyetine bu kadar önem veren işletme az bulunur. Gani Bey her ricamıza nezaketle yaklaştı."',
+      '"Ortam tertemiz, bardaklar ve servis gereçleri son derece hijyenikti. Gani Bey\'e özenli servisi için teşekkür ederiz."',
+      '"Personelin güler yüzlü olması bir mekanda en dikkat ettiğim şeydir. Gani arkadaşımız enerjisiyle günümüzü güzelleştirdi."',
+      '"Son derece nazik, kibar ve saygılı bir servis aldık. Masamızla baştan sona ilgilenen Gani Bey\'e çok teşekkürler."',
+      '"Temizlik ve düzen konusunda sıfır kusur. Masamıza bakan Gani Bey işini gerçekten severek yaptığını hissettiriyor."',
+      '"Her sorumuza sabırla ve güler yüzle yanıt veren Gani Bey\'in ilgisi takdiri hak ediyor, tebrik ederim."',
+      '"Ferah, havadar ve tertemiz bir mekan. Servis personeli Gani arkadaşımız masamızı hiç aksatmadan çok güzel ağırladı."',
+      '"Güler yüzün hiç eksik olmadığı sıcacık bir karşılama gördük. Gani Bey\'in saygılı ve ilgili tavrına hayran kaldık."',
+      '"Hijyen açısından kendinizi çok güvende hissettiğiniz bir restoran. Gani Bey servis boyunca çok dikkatli ve nazikti."',
+      '"Müşteriyi gerçekten değerli hissettiren bir ekip var. Masamıza bakan Gani arkadaşımıza içtenliği için teşekkür ederiz."',
+      '"Tüm restoran ekibi çok kibar ve profesyonel, özellikle Gani Bey\'in enerjisi ve misafirperverliği harikaydı."'
     ];
 
-    // 5. Menü Tavsiyeleri, Deneyim & Müdavimlik (25 Adet)
+    // 5. Menü Tavsiyeleri, Deneyim & Müdavimlik (40 Adet)
     const POOL_RECOMMEND = [
       '"Menüde ne seçeceğimizi bilememiştik, Gani Bey harika tavsiyelerde bulundu. Önerdiği her şeye bayıldık."',
       '"Eskişehir\'de Uzak Doğu mutfağı denemek isteyen herkese ilk önerim burası olur. Gani Bey\'e samimi ilgisi için teşekkürler."',
@@ -527,7 +587,22 @@
       '"Menüdeki lezzetler tam kıvamında ve çok doyurucu. Gani Bey\'e içtenliği ve harika servis kalitesi için çok teşekkür ederiz."',
       '"Eskişehir\'e her yolumuz düştüğünde ilk geleceğimiz adres oldu. Masamıza bakan Gani arkadaşımızın eline sağlık."',
       '"Hem lezzet hem ilgi alaka konusunda 5 yıldızı fazlasıyla hak ediyorlar. Gani Bey\'in güler yüzü için ayrıca teşekkür ederiz."',
-      '"Damak zevkine düşkün olanların mutlaka denemesi gereken bir yer. Gani Bey\'e saygılı ve kusursuz servisi için minnettarız."'
+      '"Damak zevkine düşkün olanların mutlaka denemesi gereken bir yer. Gani Bey\'e saygılı ve kusursuz servisi için minnettarız."',
+      '"İlk defa Uzak Doğu yemeği deneyecektim, Gani Bey damak tadıma en uygun seçeneği önerdi ve bayıldım. Çok teşekkürler."',
+      '"Eskişehir\'e her misafirim geldiğinde getireceğim garanti adres oldu. Gani arkadaşımızın sıcak yaklaşımı çok kıymetli."',
+      '"Fiyatına göre hem porsiyon doyuruculuğu hem de lezzet kalitesi çok yüksek. Gani Bey her detayla titizlikle ilgilendi."',
+      '"Menüdeki her seçeneğin arkasında bir emek olduğu belli. Masamıza bakan Gani Bey\'in doğru tavsiyeleri için teşekkür ederiz."',
+      '"Farklı kültürlerin mutfaklarını denemeyi seven biri olarak tam not verdim. Gani arkadaşımızın ilgisi de deneyimi güzelleştirdi."',
+      '"Arkadaşlarımla toplanıp keyifli bir akşam yemeği yedik, hepimizin favorisi oldu. Gani Bey\'in servisine sağlık."',
+      '"Menüdeki çeşitlilik çok tatmin edici, bir dahaki sefere diğer çeşitleri deneyeceğiz. Gani Bey\'e ilgisi için teşekkürler."',
+      '"Öğrenciler için hem doyurucu hem de kaliteli bir lezzet durağı. Masamızla ilgilenen Gani arkadaşımız çok samimiydi."',
+      '"Kendi aramızda ne sipariş versek diye düşünürken Gani Bey\'in nokta atışı önerileri masamızı şenlendirdi."',
+      '"Eskişehir\'de yeme içme konusunda fark yaratan ender yerlerden. Gani Bey\'in güler yüzlü servisi için minnettarız."',
+      '"Gerek lezzet dengesi gerekse fiyat kalitesi açısından kesinlikle tavsiye edeceğim bir yer. Gani arkadaşımızın eline sağlık."',
+      '"Uzun zamandır bu kadar keyif alarak yemek yememiştim. Masamıza bakan Gani Bey hem nazik hem çok ilgiliydi."',
+      '"İlk gelişim ama kesinlikle son olmayacak, şimdiden müdavimi olduk. Gani Bey\'in pozitif enerjisi için teşekkürler."',
+      '"Her ayrıntısıyla 5 yıldızı hak eden bir işletme. Masamızla ilgilenen Gani arkadaşımızın emeği için teşekkür ederiz."',
+      '"Eskişehir\'de lezzetli ve kaliteli bir mekan arayan herkesin listesinde olmalı. Gani Bey\'e harika servisi için sevgiler."'
     ];
 
     function getRandomItem(array) {
